@@ -2,6 +2,7 @@ import { AiOutlineLogin } from "react-icons/ai";
 import { MdAppRegistration } from "react-icons/md";
 import { Link } from "react-router-dom";
 import Theme from "../../components/darkmode/Theme";
+import { Tooltip } from 'react-tooltip'
 
 const NavBar = () => {
     return (
@@ -42,12 +43,18 @@ const NavBar = () => {
       <li><a>Item 3</a></li>
     </ul>
   </div>
-  <div className="navbar-end">
-    <Link className="btn btn-circle"><AiOutlineLogin /></Link>
-    <Link className="btn btn-circle"><MdAppRegistration /></Link>
-    <Theme></Theme>
+  <div className="navbar-end gap-2">
+    <Link className="btn btn-circle login"><AiOutlineLogin /></Link>
+    <Link className="btn btn-circle reg"><MdAppRegistration /></Link>
+    <button className="btn btn-circle"><Theme></Theme></button> 
   </div>
 </div>
+<Tooltip anchorSelect=".login" place="bottom">
+  Login
+</Tooltip>
+<Tooltip anchorSelect=".reg" place="bottom">
+Registration
+</Tooltip>
 
 
         </nav>
