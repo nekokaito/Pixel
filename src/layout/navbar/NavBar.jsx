@@ -69,7 +69,7 @@ Logout
 
       <Link to="/login" className="btn btn-circle login"><AiOutlineLogin />
       </Link>
-      <Link className="btn btn-circle reg"><MdAppRegistration />
+      <Link to="/register" className="btn btn-circle reg"><MdAppRegistration />
       </Link>
       <Tooltip anchorSelect=".login" place="bottom">
   Login
