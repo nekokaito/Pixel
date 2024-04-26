@@ -1,3 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Jersey+25&family=Noto+Sans+JP:wght@100..900&family=Pixelify+Sans:wght@400..700&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+.font-roboto-{
+  font-family: "Roboto Mono", monospace;
+  font-style: normal;
+}
+
+.font-noto-sans-jp {
+  font-family: "Noto Sans JP", sans-serif;
+  font-style: normal;
+}
+
+.font-jersey {
+    font-family: "Jersey 25", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+.font-pixel {
+  font-family: "Pixelify Sans", sans-serif;
+  font-style: normal;
+}
