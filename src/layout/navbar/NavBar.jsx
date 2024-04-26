@@ -6,7 +6,7 @@ import { Tooltip } from 'react-tooltip'
 
 const NavBar = () => {
    
-    const links = <div className="md:flex gap-3">
+    const links = <div className="md:flex gap-3 font-pixel">
         <li><NavLink to="/">Home</NavLink></li>
         <li><NavLink to="/allitems">All Art & craft Items</NavLink></li>
         <li><NavLink to="/additems">Add Craft Item</NavLink></li>

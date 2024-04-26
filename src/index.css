@@ -6,7 +6,7 @@
 @tailwind utilities;
 
 
-.font-roboto-{
+.font-roboto{
   font-family: "Roboto Mono", monospace;
   font-style: normal;
 }

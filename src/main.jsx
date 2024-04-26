@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 import './index.css'
 import Root from './layout/root/Root';
+// eslint-disable-next-line no-unused-vars
 import { element } from 'prop-types';
 import Home from './layout/main/Home';
 
