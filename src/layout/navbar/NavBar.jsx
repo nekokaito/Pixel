@@ -3,8 +3,19 @@ import { MdAppRegistration } from "react-icons/md";
 import { Link, NavLink } from "react-router-dom";
 import Theme from "../../components/darkmode/Theme";
 import { Tooltip } from 'react-tooltip'
+import { useContext } from "react";
+import { AuthContext } from "../../provider/AuthProvider";
+import { RiLogoutCircleLine } from "react-icons/ri";
 
 const NavBar = () => {
+
+  const {user, logOut} = useContext(AuthContext);
+
+   const handleLogOut = () => {
+    logOut()
+    .then()
+    .catch()
+   }
    
     const links = <div className="md:flex gap-3 font-pixel">
         <li><NavLink to="/">Home</NavLink></li>
@@ -36,20 +47,43 @@ const NavBar = () => {
     </ul>
   </div>
   <div className="navbar-end gap-2">
-    <Link to="/login" className="btn btn-circle login"><AiOutlineLogin /></Link>
-    <Link className="btn btn-circle reg"><MdAppRegistration /></Link>
-    <button className="btn btn-circle"><Theme></Theme></button> 
+    {
+      user? (<>
+  
+
+
+<div tabIndex={0} role="button" className=" rounded-full btn btn-ghost btn-circle avatar tooltip tooltip-bottom hover:bg-transparent " data-tip={user?.displayName}>
+    
+    <div className="rounded-full ">
+      <img alt={user?.displayName} src={user?.photoURL} />
+      
+    </div>
   </div>
-</div>
-<Tooltip anchorSelect=".login" place="bottom">
+
+  <Link to="/login"><button onClick={handleLogOut} className="btn btn-circle logout"><RiLogoutCircleLine /></button></Link> 
+  <Tooltip anchorSelect=".logout" place="bottom">
+Logout
+</Tooltip>
+
+      </> ) :  ( <>
+
+      <Link to="/login" className="btn btn-circle login"><AiOutlineLogin />
+      </Link>
+      <Link className="btn btn-circle reg"><MdAppRegistration />
+      </Link>
+      <Tooltip anchorSelect=".login" place="bottom">
   Login
 </Tooltip>
 <Tooltip anchorSelect=".reg" place="bottom">
 Registration
 </Tooltip>
-
-
-        </nav>
+      </>)
+    }
+    
+    <button className="btn btn-circle"><Theme></Theme></button> 
+  </div>
+</div>
+ </nav>
     );
 };
 

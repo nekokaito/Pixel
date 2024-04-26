@@ -1,30 +1,8 @@
-import { useEffect, useState } from "react";
-
+import { useContext } from "react";
+import { AuthContext } from "../../provider/AuthProvider";
 const Theme = () => {
     
-     const [theme, setTheme] = useState(
-        localStorage.getItem("theme") ? localStorage.getItem("theme") : "light"
-     );
-
-     useEffect (() => {
-        localStorage.setItem("theme", theme);
-        
-        const webTheme = localStorage.getItem("theme");
-        document.querySelector("html").setAttribute("data-theme", webTheme);
-
-
-     } , [theme])
-   
-     const changeTheme = (e) => {
-             
-        if (e.target.checked) {
-            setTheme("dark");
-        }
-
-    else {
-        setTheme("light");
-    }
-     }
+    const {theme, changeTheme} = useContext(AuthContext);
 
 
     return (

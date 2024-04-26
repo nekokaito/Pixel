@@ -53,23 +53,23 @@ const Login = () => {
     
     
       return (
-        <>
+        <div className="">
         <Toaster />
          <h1 className="text-4xl text-center my-10 font-bold">Login Now!</h1>
         <div className="flex my-14 justify-center p-10">
-            <div className="glass w-full md:w-1/2 xl:w-3/12 rounded-3xl">
+            <div className="bg-[#3c1c33db] w-full md:w-1/2 xl:w-3/12 rounded-3xl">
             <form onSubmit={handleLogIn} className="card-body ">
             
             <div className="form-control">
               <label className="label">
-                <span className="label-text">Email</span>
+                <span className="label-text text-white">Email</span>
               </label>
               <input type="email" name="email" placeholder="email" className="input input-bordered" required />
             </div>
             
             <div className="form-control">
               <label className="label">
-                <span className="label-text">Password</span>
+                <span className="label-text text-white">Password</span>
               </label>
               <div className="relative border rounded-4xl input input-bordered">
                         <input
@@ -88,17 +88,17 @@ const Login = () => {
               
             </div>
             <div className="form-control mt-6">
-              <button className="btn bg-cyan-400 border-none text-white">Login</button>
+              <button className="btn bg-[#ca678c] border-none text-white">Login</button>
             </div>
             <div className="my-5">
-                <p className="text-sm font-extralight"> Don't You Have An Account? <Link className="italic text-blue-400" to="/register">Register Now!</Link></p>
+                <p className="text-sm font-extralight text-white"> Don't You Have An Account? <Link className="italic text-[#ca678c]" to="/register">Register Now!</Link></p>
              </div>
 
              <hr />
 
              <div className="flex justify-center gap-2">
-              <div onClick={handleGoogleLogIn} className="btn w-24"><FaGoogle /></div>
-              <div onClick={handleGithubLogIn} className="btn w-24"><FaGithub /></div>
+              <div onClick={handleGoogleLogIn} className="btn btn-circle w-24"><FaGoogle /></div>
+              <div onClick={handleGithubLogIn} className="btn btn-circle w-24"><FaGithub /></div>
               
              </div>
           </form>
@@ -106,7 +106,7 @@ const Login = () => {
              
         </div>
         
-        </>
+        </div>
     );
 };
 

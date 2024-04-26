@@ -12,6 +12,18 @@ const AuthProvider = ({children}) => {
     const GithubProvider = new GithubAuthProvider();
 
     const [user, setUser] = useState(null)
+    const [theme, setTheme] = useState(
+        localStorage.getItem("theme") ? localStorage.getItem("theme") : "light"
+     );
+     useEffect(() => {
+        localStorage.setItem("theme", theme);
+        document.querySelector("html").setAttribute("data-theme", theme);
+      }, [theme]);
+
+      const changeTheme = (e) => {
+        setTheme(e.target.checked ? "dark" : "light");
+      };
+
     const [loading, setLoading] = useState(true);
     const createUser = (email, password) => {
         setLoading(true);
@@ -52,7 +64,7 @@ const AuthProvider = ({children}) => {
     }, [])
 
 
-    const authInfo = {user, createUser, logOut, logIn, loading, googleLogin, githubLogin, updateUserProfile}
+    const authInfo = {user, createUser, logOut, logIn, loading, googleLogin, githubLogin, updateUserProfile, theme, changeTheme}
 
     return (
         <AuthContext.Provider value={authInfo}>
