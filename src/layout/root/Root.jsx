@@ -5,9 +5,11 @@ import Footer from "../footer/Footer";
 const Root = () => {
     return (
         <>
-           
-           <NavBar></NavBar>
+         <NavBar></NavBar>
+           <div className="container mx-auto min-h-screen">
            <Outlet></Outlet>
+           </div>
+           
            <Footer></Footer>
          
         </>
