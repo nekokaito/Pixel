@@ -36,7 +36,7 @@ const NavBar = () => {
     </ul>
   </div>
   <div className="navbar-end gap-2">
-    <Link className="btn btn-circle login"><AiOutlineLogin /></Link>
+    <Link to="/login" className="btn btn-circle login"><AiOutlineLogin /></Link>
     <Link className="btn btn-circle reg"><MdAppRegistration /></Link>
     <button className="btn btn-circle"><Theme></Theme></button> 
   </div>
