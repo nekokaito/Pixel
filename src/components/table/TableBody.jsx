@@ -1,5 +1,7 @@
 /* eslint-disable react/prop-types */
 
+import { Link } from "react-router-dom";
+
 
 const TableBody = ({item}) => {
 
@@ -32,7 +34,7 @@ const TableBody = ({item}) => {
         <td>{price}</td>
         <td>{stockStatus}</td>
         <th>
-          <button className="btn btn-ghost ">details</button>
+        <Link to={`/${_id}`}> <button className="btn btn-ghost ">View Details</button></Link>
         </th>
       </tr>
    
