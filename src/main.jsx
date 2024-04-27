@@ -16,6 +16,7 @@ import Register from './layout/account/Register';
 import AddItems from './layout/main/items/AddItems';
 import AllItems from './layout/main/items/AllItems';
 import MyItems from './layout/main/items/MyItems';
+import Details from './layout/main/items/details/Details';
 
 const router = createBrowserRouter([
   {
@@ -37,7 +38,8 @@ const router = createBrowserRouter([
       },
       {
           path: "/all_items",
-          element: <AllItems></AllItems>
+          element: <AllItems></AllItems>,
+          loader: () => fetch('http://localhost:5000/items')
       },
       {
         path: "/add_items",
@@ -47,6 +49,11 @@ const router = createBrowserRouter([
         path: "/my_items",
         element: <MyItems></MyItems>
       },
+      {
+        path: "/:_id",
+        element: <Details></Details>,
+        loader: () => fetch('http://localhost:5000/items')
+      }
 
     ] 
   },

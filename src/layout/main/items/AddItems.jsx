@@ -24,8 +24,8 @@ const AddItems = () => {
      const price = form.price.value;
      const processing_time = form.processing_time.value;
      const rating = form.rating.value;
-
-     const itemData = {photo_url, item_name,  username, email, customization, subcategory_Name, stockStatus,description, price, processing_time, rating}
+     const userPhoto = user?.photoURL;
+     const itemData = {photo_url, item_name,  username, email, customization, subcategory_Name, stockStatus,description, price, processing_time, rating, userPhoto}
 
      console.log(itemData);
 
