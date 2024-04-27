@@ -19,9 +19,9 @@ const NavBar = () => {
    
     const links = <div className="md:flex gap-3 font-pixel">
         <li><NavLink to="/">Home</NavLink></li>
-        <li><NavLink to="/allitems">All Art & craft Items</NavLink></li>
-        <li><NavLink to="/additems">Add Craft Item</NavLink></li>
-        <li><NavLink to="/myitems">My Art&Craft List</NavLink></li>
+        <li><NavLink to="/all_items">All Art & craft Items</NavLink></li>
+        <li><NavLink to="/add_items">Add Craft Item</NavLink></li>
+        <li><NavLink to="/my_items">My Art&Craft List</NavLink></li>
         
 
     </div>

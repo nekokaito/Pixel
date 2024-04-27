@@ -13,6 +13,9 @@ import { element } from 'prop-types';
 import Home from './layout/main/Home';
 import Login from './layout/account/Login';
 import Register from './layout/account/Register';
+import AddItems from './layout/main/items/AddItems';
+import AllItems from './layout/main/items/AllItems';
+import MyItems from './layout/main/items/MyItems';
 
 const router = createBrowserRouter([
   {
@@ -30,7 +33,19 @@ const router = createBrowserRouter([
       {
         path: "/register",
         element: <Register></Register>
-      }
+      },
+      {
+          path: "/all_items",
+          element: <AllItems></AllItems>
+      },
+      {
+        path: "/add_items",
+        element: <AddItems></AddItems>
+      },
+      {
+        path: "/my_items",
+        element: <MyItems></MyItems>
+      },
 
     ] 
   },

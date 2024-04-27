@@ -7,6 +7,7 @@ export const AuthContext = createContext(null);
 
 const auth = getAuth(app);
 
+// eslint-disable-next-line react/prop-types
 const AuthProvider = ({children}) => {
     const GoogleProvider = new GoogleAuthProvider();
     const GithubProvider = new GithubAuthProvider();
@@ -39,7 +40,10 @@ const AuthProvider = ({children}) => {
 
 
       const changeTheme = (e) => {
+        const sound = new Audio ('change.mp3')
         setTheme(e.target.checked ? "dark" : "light");
+        sound.play();
+
       };
 
     const [loading, setLoading] = useState(true);
