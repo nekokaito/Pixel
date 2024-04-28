@@ -5,9 +5,10 @@ import { CiTimer } from "react-icons/ci";
 import { GiPriceTag } from "react-icons/gi";
 import { useContext } from "react";
 import { AuthContext } from "../../../../provider/AuthProvider";
+import { Rating, Typography } from "@mui/material";
 
 const Details = () => {
-    const {user, theme} =  useContext(AuthContext);
+    const {theme} =  useContext(AuthContext);
     const items = useLoaderData();
     const { _id } = useParams();
     const item = items.find(item => item._id == _id);
@@ -25,8 +26,11 @@ const Details = () => {
                     <img className="rounded-3xl" src={photo_url} alt={item_name} /></div>
                 <div className="flex justify-center flex-col gap-3 md:p-8">
                  
-                 <div className="flex justify-center lg:justify-start items-center gap-4 p-4">
+                 <div className="flex flex-col justify-center lg:justify-start  gap-4 p-4">
+                    <div className="flex justify-start gap-3">
                     <h1 className="text-3xl font-bold font-pixel">{item_name} </h1>  <div className={stockStatus === 'In stock'? `badge badge-accent badge-outline text-xs p-5`: `badge badge-secondary badge-outline text-xs p-5`}>{stockStatus}</div>
+                    </div>
+                    <Rating name="read-only" value={rating} readOnly />
 
                  </div>
 
@@ -38,6 +42,8 @@ const Details = () => {
                  </div>
                <div className="p-4 font-roboto text-xs md:text-base">
                 <p> {description}</p>
+                
+
                </div>
     </div>
             

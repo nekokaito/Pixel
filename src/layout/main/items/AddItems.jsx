@@ -51,8 +51,9 @@ const AddItems = () => {
     return (
         <div className="flex justify-center item-center ">
           <div><Toaster></Toaster></div>
-            <div className="p-4">
-            <form onSubmit={addItem}>
+            <div className="p-5">
+            <div className={`mockup-window border min-h-screen my-10 ${theme === 'dark'? 'bg-[#000000c3]': 'bg-[#fffd]'}`}>
+  <div className="flex justify-center px-4 p-5">  <form onSubmit={addItem}>
             <div className="form-control ">
               <label className="label">
                 <span className={theme === 'dark'? `label-text text-white font-pixel`: `label-text text-black font-pixel`}>Product Image</span>
@@ -83,14 +84,14 @@ const AddItems = () => {
                 
                 <div className="">
  <select name="customization" className="select select-info w-[478px] md:w-full border-[#ca678c]" required>
-  <option disabled>Customization</option>
+  <option disabled selected>Customization</option>
   <option>Yes</option>
   <option>No</option>
   
 </select></div>
                 <div className="">
                 <select name="subcategory_Name" className="select select-info w-[478px] md:w-full border-[#ca678c]" required>
-  <option disabled >Subcategory</option>
+  <option disabled selected>Subcategory</option>
   <option>Landscape Painting</option>
   <option>Portrait Drawing</option>
   <option>Watercolour Painting</option>
@@ -100,7 +101,7 @@ const AddItems = () => {
                 </div>
                 <div className="">
                 <select name="stockStatus" className="select select-info w-[478px] md:w-full border-[#ca678c]" required>
-  <option disabled >Stock Status</option>
+  <option disabled selected>Stock Status</option>
   <option>In stock</option>
   <option>Made to Order</option>
   <option>Out of Stock</option>
@@ -113,7 +114,7 @@ const AddItems = () => {
               <label className="label">
                 <span className={theme === 'dark'? `label-text text-white font-pixel`: `label-text text-black font-pixel`}>Description</span>
               </label>
-              <textarea name="description" placeholder="Product Description" className="input input-bordered border-[#ca678c] font-pixel" required></textarea>
+              <textarea name="description" placeholder="Product Description" className="input input-bordered border-[#ca678c] font-pixel h-24" required></textarea>
             </div>
 
             <div className="form-control">
@@ -143,12 +144,13 @@ const AddItems = () => {
             <div className="form-control mt-6">
               <button className="btn bg-[#ca678c] border-none text-white font-jersey">Add Product</button>
             </div>
-
-            
-            
-           </form>
-            </div>
-        </div>
+            </form> 
+</div>
+</div>
+      </div>
+           
+ </div>
+        
     );
 };
 

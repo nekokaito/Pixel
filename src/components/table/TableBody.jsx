@@ -27,7 +27,8 @@ const TableBody = ({item}) => {
           </div>
         </td>
         <td>
-          {item_name}
+         <span className=" font-bold">{item_name}</span> 
+          
          
         </td>
         <td>{subcategory_Name}</td>
