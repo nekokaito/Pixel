@@ -49,6 +49,7 @@ const AddItems = () => {
 
 
     return (
+      <>
         <div className="flex justify-center item-center ">
           <div><Toaster></Toaster></div>
             <div className="p-5">
@@ -150,7 +151,7 @@ const AddItems = () => {
       </div>
            
  </div>
-        
+      </>  
     );
 };
 

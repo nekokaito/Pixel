@@ -17,6 +17,7 @@ import AddItems from './layout/main/items/AddItems';
 import AllItems from './layout/main/items/AllItems';
 import MyItems from './layout/main/items/MyItems';
 import Details from './layout/main/items/details/Details';
+import Private from './provider/Private';
 
 const router = createBrowserRouter([
   {
@@ -43,11 +44,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/add_items",
-        element: <AddItems></AddItems>
+        element: <Private><AddItems></AddItems></Private> 
       },
       {
         path: "/my_items",
-        element: <MyItems></MyItems>
+        element: <Private><MyItems></MyItems></Private>
       },
       {
         path: "/:_id",

@@ -13,7 +13,7 @@ const Details = () => {
     const { _id } = useParams();
     const item = items.find(item => item._id == _id);
      
-    const {photo_url, item_name,  customization, subcategory_Name, stockStatus,description, price, processing_time, rating} = item;
+    const {photo_url, item_name,  customization, subcategory_Name, stockStatus, description, price, processing_time, rating} = item;
 
     return (
         <div className="p-4">
