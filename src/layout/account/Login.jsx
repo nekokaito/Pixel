@@ -15,6 +15,7 @@ const Login = () => {
    const {logIn, googleLogin, githubLogin, theme} = useContext(AuthContext)
    const location = useLocation();
    const navigation = useNavigate();
+   const [errorLogin, setErrorLogin] = useState('');
    const [showPassword, setShowPassword] = useState(false);
      useEffect(() => {
     document.title = "Login | Pixel";
@@ -30,18 +31,20 @@ const Login = () => {
         const password =  form.get('password');
         logIn (email, password)
         .then (() => {
-             toast.success('Successfully Login!');
+             
              navigation(location?.state ? location.state : '/');
+             toast.success('Successfully Login!');
         })
-        .catch (error => console.log(error))
+        .catch (error => setErrorLogin(error.toString()))
       }
       const handleGoogleLogIn = (e) => {
         e.preventDefault();
         googleLogin()
         .then (() => {
           navigation(location?.state ? location.state : '/');
+          toast.success('Successfully Login!');
      })
-         .catch (error => console.log(error))
+         .catch (error => setErrorLogin(error.toString()))
       }
 
       const handleGithubLogIn = (e) => {
@@ -49,8 +52,9 @@ const Login = () => {
         githubLogin()
         .then (() => {
           navigation(location?.state ? location.state : '/');
+          toast.success('Successfully Login!');
      })
-         .catch (error => console.log(error))
+         .catch (error => setErrorLogin(error.toString()))
       }
     
      
@@ -108,6 +112,7 @@ const Login = () => {
             <div className="form-control mt-6">
               <button className="btn bg-[#ca678c] border-none text-white font-jersey">Login</button>
             </div>
+            <p className=" text-red-500 text-sm"> {errorLogin}</p>
             <div className="my-5">
                 <p className="text-sm font-extralight text-white font-pixel"> Don't You Have An Account? <Link className="italic text-[#ca678c]" to="/register">Register Now!</Link></p>
              </div>

@@ -80,6 +80,7 @@ const Register = () => {
         googleLogin()
         .then (() => {
           navigation(location?.state ? location.state : '/');
+          toast.success('Successfully Login!');
      })
          .catch (error => console.log(error))
       }
@@ -89,6 +90,7 @@ const Register = () => {
         githubLogin()
         .then (() => {
           navigation(location?.state ? location.state : '/');
+          toast.success('Successfully Login!');
      })
          .catch (error => console.log(error))
       }

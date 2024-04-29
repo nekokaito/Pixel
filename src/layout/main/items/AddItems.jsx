@@ -27,7 +27,9 @@ const AddItems = () => {
      const userPhoto = user?.photoURL;
      const itemData = {photo_url, item_name,  username, email, customization, subcategory_Name, stockStatus,description, price, processing_time, rating, userPhoto}
 
-     console.log(itemData);
+    
+      
+   
 
 
      fetch('http://localhost:5000/items', {
@@ -42,6 +44,7 @@ const AddItems = () => {
       console.log(data)
       if(data.insertedId) {
         toast.success('Item Added Successfully');
+        document.getElementById("add-item").reset();
       }
      })
 
@@ -51,10 +54,11 @@ const AddItems = () => {
     return (
       <>
         <div className="flex justify-center item-center">
-          <div><Toaster></Toaster></div>
+          
             <div className="flex justify-center">
             <div className={`mockup-window border w-[90%] min-h-screen my-10  ${theme === 'dark'? 'bg-[#000000c3]': 'bg-[#fffd]'}`}>
-  <div className="flex justify-center">  <form className="w-[90%] m-10" onSubmit={addItem}>
+            <h1 className=" text-center text-3xl font-pixel">AddItem.js</h1>
+  <div className="flex justify-center">  <form id="add-item" className="w-[90%] m-10" onSubmit={addItem}>
             <div className="form-control">
               <label className="label">
                 <span className={theme === 'dark'? `label-text text-white font-pixel`: `label-text text-black font-pixel`}>Product Image</span>
@@ -68,7 +72,7 @@ const AddItems = () => {
               <label className="label">
                 <span className={theme === 'dark'? `label-text text-white font-pixel`: `label-text text-black font-pixel`}>Product Name</span>
               </label>
-              <input type="text" name="item_name" placeholder="Name of Product" className="input input-bordered border-[#ca678c] font-pixel" required />
+              <input type="text" name="item_name" placeholder="Name of Product" className="input input-bordered border-[#ca678c] font-pixel" maxLength="24" required />
             </div>
             <div className="">
                 <div className="form-control">
@@ -99,6 +103,7 @@ const AddItems = () => {
   <option>Landscape Painting</option>
   <option>Portrait Drawing</option>
   <option>Watercolour Painting</option>
+  <option>Charcoal Sketching</option>
   <option>Oil Painting</option>
   <option>Cartoon Drawing</option>
 </select> 

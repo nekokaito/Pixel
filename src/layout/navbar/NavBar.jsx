@@ -6,14 +6,16 @@ import { Tooltip } from 'react-tooltip'
 import { useContext } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
 import { RiLogoutCircleLine } from "react-icons/ri";
-
+import toast, { Toaster } from 'react-hot-toast';
 const NavBar = () => {
 
   const {user, logOut, theme} = useContext(AuthContext);
 
    const handleLogOut = () => {
     logOut()
-    .then()
+    .then(
+      toast.success('Logged Out Successfully')
+    )
     .catch()
    }
    

@@ -81,7 +81,7 @@ const UpdateItem = () => {
               <label className="label">
                 <span className={theme === 'dark'? `label-text text-white font-pixel`: `label-text text-black font-pixel`}>Product Name</span>
               </label>
-              <input type="text" name="item_name" placeholder="Name of Product" className="input input-bordered border-[#ca678c] font-pixel" defaultValue={item_name}/>
+              <input type="text" name="item_name" placeholder="Name of Product" className="input input-bordered border-[#ca678c] font-pixel" defaultValue={item_name} maxLength="24"/>
             </div>
             <div className="">
                 <div className="form-control">
@@ -112,6 +112,7 @@ const UpdateItem = () => {
   <option>Landscape Painting</option>
   <option>Portrait Drawing</option>
   <option>Watercolour Painting</option>
+  <option>Charcoal Sketching</option>
   <option>Oil Painting</option>
   <option>Cartoon Drawing</option>
 </select> 

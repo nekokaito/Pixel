@@ -19,7 +19,7 @@ const ItemSection = ({items}) => {
             delaySpeed={1000}
            /></span><br></br> </h1>
             <div className="grid lg:grid-cols-2 xl:grid-cols-3 justify-center p-5 gap-10">
-            {items.map(item => <ItemCard key={item._id} item={item}></ItemCard>)}
+            {items.slice(0, 6).map(item => <ItemCard key={item._id} item={item}></ItemCard>)}
             </div>
             
              
