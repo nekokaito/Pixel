@@ -19,10 +19,12 @@ import MyItems from './layout/main/items/MyItems';
 import Details from './layout/main/items/details/Details';
 import Private from './provider/Private';
 import UpdateItem from './layout/main/items/UpdateItem';
+import Error from './layout/error/Error';
 
 const router = createBrowserRouter([
   {
     path: "/",
+    errorElement:<Error></Error>,
     element: <Root></Root>,
     children: [
       {

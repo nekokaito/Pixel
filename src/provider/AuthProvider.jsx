@@ -39,6 +39,29 @@ const AuthProvider = ({children}) => {
         
       }, [theme]);
 
+      useEffect(() => {
+       
+        const lightFaviconPath = "Pixel_Logo_fav.png";
+        const darkFaviconPath = "Pixel_Logo_dark_fav.png";
+    
+      
+        const favicon = document.querySelector("link[rel='icon']") || document.createElement('link');
+        favicon.type = 'image/x-icon';
+        favicon.rel = 'icon';
+    
+        
+        favicon.href = theme === "dark" ? darkFaviconPath : lightFaviconPath;
+    
+        
+        document.head.appendChild(favicon);
+    
+        
+        return () => {
+            document.head.removeChild(favicon);
+        };
+    }, [theme]);
+    
+
 
       const changeTheme = (e) => {
         const sound = new Audio ('change.mp3')
