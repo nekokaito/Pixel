@@ -15,6 +15,8 @@ import Swal from 'sweetalert2';
 
 
 const MyCard = ({myItem, theme}) => {
+
+
       
     const {_id, item_name, subcategory_Name, price, photo_url, rating, customization, stockStatus} = myItem;
 
@@ -30,11 +32,21 @@ const MyCard = ({myItem, theme}) => {
             confirmButtonText: "Yes, delete it!"
           }).then((result) => {
             if (result.isConfirmed) {
-              Swal.fire({
-                title: "Deleted!",
-                text: "Your file has been deleted.",
-                icon: "success"
-              });
+              fetch(`http://localhost:5000/items/${id}`, {
+                method : 'DELETE'
+              })
+              .then(res => res.json())
+              .then(data => {
+                console.log(data)
+               if(data.deletedCount > 0 ) {
+                Swal.fire({
+                    title: "Deleted!",
+                    text: "Your file has been deleted.",
+                    icon: "success"
+                  });
+                  location.reload();
+               }
+              })
             }
           });
     }
