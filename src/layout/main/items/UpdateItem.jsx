@@ -43,7 +43,7 @@ const UpdateItem = () => {
      
 
 
-     fetch(`http://localhost:5000/items/id/${_id}`, {
+     fetch(`https://pixels-server.vercel.app/items/id/${_id}`, {
         method: 'PUT',
         headers: {
           'content-type': 'application/json'

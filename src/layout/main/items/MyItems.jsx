@@ -12,7 +12,7 @@ const MyItems = () => {
     const [loading, setLoading] = useState(true); 
 
     useEffect(()=>{
-        fetch(`http://localhost:5000/items/email/${user?.email}`)
+        fetch(`https://pixels-server.vercel.app/items/email/${user?.email}`)
         .then (res => res.json())
         .then (data => {
             console.log(data)

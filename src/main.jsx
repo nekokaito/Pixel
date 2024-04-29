@@ -31,7 +31,7 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
-        loader: () => fetch('http://localhost:5000/items')
+        loader: () => fetch('https://pixels-server.vercel.app/items')
       },
       {
         path: "/login",
@@ -44,7 +44,7 @@ const router = createBrowserRouter([
       {
           path: "/all_items",
           element: <AllItems></AllItems>,
-          loader: () => fetch('http://localhost:5000/items')
+          loader: () => fetch('https://pixels-server.vercel.app/items')
       },
       {
         path: "/add_items",
@@ -57,12 +57,12 @@ const router = createBrowserRouter([
       {
         path: "/:_id",
         element: <Details></Details>,
-        loader: () => fetch('http://localhost:5000/items')
+        loader: () => fetch('https://pixels-server.vercel.app/items')
       },
       {
         path: "/update_item/:id",
         element: <UpdateItem></UpdateItem>,
-        loader: ({params}) => fetch(`http://localhost:5000/items/id/${params.id}`)    
+        loader: ({params}) => fetch(`https://pixels-server.vercel.app/items/id/${params.id}`)    
       },
       {
         path: "/category/:url",

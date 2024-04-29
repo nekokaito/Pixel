@@ -32,7 +32,7 @@ const AddItems = () => {
    
 
 
-     fetch('http://localhost:5000/items', {
+     fetch('https://pixels-server.vercel.app/items', {
         method: 'POST',
         headers: {
           'content-type': 'application/json'

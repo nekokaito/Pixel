@@ -32,7 +32,7 @@ const MyCard = ({myItem}) => {
             confirmButtonText: "Yes, delete it!"
           }).then((result) => {
             if (result.isConfirmed) {
-              fetch(`http://localhost:5000/items/${id}`, {
+              fetch(`https://pixels-server.vercel.app/items/${id}`, {
                 method : 'DELETE'
               })
               .then(res => res.json())

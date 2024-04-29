@@ -10,7 +10,7 @@ const CategoryItems = () => {
     const [items, setItems] = useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/items/category/${url}`)
+        fetch(`https://pixels-server.vercel.app/items/category/${url}`)
             .then(res => res.json())
             .then(data => {
                 setItems(data);
