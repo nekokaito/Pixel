@@ -3,7 +3,7 @@ import { Typewriter } from "react-simple-typewriter";
 
 const MiniBanner = () => {
     return (
-        <div className="my-10 p-5 md:p-0">
+        <div className=" my-36 p-5 md:p-0">
             <div className="rounded-2xl bg-[#0000007d] p-4">
         <div className='flex justify-center items-center flex-col gap-5'>
         <h1 className='text-2xl  md:text-5xl lg:text-7xl text-white font-bold font-jersey'>We are Serving {''}<span className=" text-red-500"><Typewriter

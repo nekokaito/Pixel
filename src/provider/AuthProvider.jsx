@@ -36,6 +36,7 @@ const AuthProvider = ({children}) => {
         body.style.backgroundRepeat = "no-repeat";
         body.style.backgroundSize = "cover";
         body.style.opacity = theme === "dark" ? "0.8" : "1";
+        
       }, [theme]);
 
 
