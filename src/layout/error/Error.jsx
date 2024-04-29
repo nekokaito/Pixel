@@ -1,10 +1,10 @@
-import { useContext } from "react";
+
 import { Link } from "react-router-dom";
-import { AuthContext } from "../../provider/AuthProvider";
+
 
 export default function Error() {
   
-    const {theme} =  useContext(AuthContext);
+   
 
   return (
     <div>

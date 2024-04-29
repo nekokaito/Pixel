@@ -11,11 +11,11 @@ import { Link } from 'react-router-dom';
 const CategoryCard = ({item}) => {
     const {theme} = useContext(AuthContext);
     const {image, name} = item;
-    const mod = name.replace(/\s/g, "_");
-    console.log(mod)
+    const url = name.replace(/\s/g, "_");
+    console.log(url);
     return (
-        
-        <div>
+ <Link to={`/category/${url}`}>
+ <div>
             <Card className={`shadow-md transition duration-300  transform hover:animate-pulse hover:scale-95`}  sx={{ width: 420, bgcolor: `${theme === 'dark'? '#000000a0': '#fffd'}`, border: 'none' }}>
         <div className='font-pixel'>
             <h1 className={`${theme === 'dark'? 'text-white': 'text-black'} text-2xl `}>{name}</h1>
@@ -45,6 +45,8 @@ const CategoryCard = ({item}) => {
         </CardContent>
       </Card>
         </div>
+ </Link>
+        
     );
 };
 

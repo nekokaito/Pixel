@@ -20,6 +20,7 @@ import Details from './layout/main/items/details/Details';
 import Private from './provider/Private';
 import UpdateItem from './layout/main/items/UpdateItem';
 import Error from './layout/error/Error';
+import CategoryItems from './layout/main/items/CategoryItems';
 
 const router = createBrowserRouter([
   {
@@ -62,6 +63,11 @@ const router = createBrowserRouter([
         path: "/update_item/:id",
         element: <UpdateItem></UpdateItem>,
         loader: ({params}) => fetch(`http://localhost:5000/items/id/${params.id}`)    
+      },
+      {
+        path: "/category/:url",
+        element: <CategoryItems></CategoryItems>
+
       }
 
     ] 

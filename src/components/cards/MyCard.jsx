@@ -14,7 +14,7 @@ import Swal from 'sweetalert2';
 
 
 
-const MyCard = ({myItem, theme}) => {
+const MyCard = ({myItem}) => {
 
 
       

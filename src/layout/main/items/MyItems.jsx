@@ -25,7 +25,7 @@ const MyItems = () => {
                 <div className="flex justify-center items-center h-[500px] px-4"> <h1 className="text-2xl md:text-4xl font-roboto font-bold">No Item is Added By You.</h1></div>
               </div>) : (<div className="grid lg:grid-cols-2 xl:grid-cols-4 justify-center p-5 gap-10">
                 {
-                    myItems.map(myItem => <MyCard key={myItem._id} myItem={myItem} theme={theme}></MyCard>)
+                    myItems.map(myItem => <MyCard key={myItem._id} myItem={myItem}></MyCard>)
                 }
                 </div>)
             }
