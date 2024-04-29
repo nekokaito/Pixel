@@ -21,7 +21,7 @@ const MyCard = ({myItem}) => {
     const {_id, item_name, subcategory_Name, price, photo_url, rating, customization, stockStatus} = myItem;
 
     const itemDelete = (id) => {
-        console.log(id);
+       
         Swal.fire({
             title: "Are you sure?",
             text: "You won't be able to revert this!",
@@ -37,7 +37,7 @@ const MyCard = ({myItem}) => {
               })
               .then(res => res.json())
               .then(data => {
-                console.log(data)
+                
                if(data.deletedCount > 0 ) {
                 Swal.fire({
                     title: "Deleted!",

@@ -15,7 +15,7 @@ const MyItems = () => {
         fetch(`https://pixels-server.vercel.app/items/email/${user?.email}`)
         .then (res => res.json())
         .then (data => {
-            console.log(data)
+            
             setMyItems(data);
             setLoading(false);
         })
@@ -27,7 +27,7 @@ const MyItems = () => {
         return myItems.filter(item => item.customization === filter);
     };
     return (
-        <div className="m-10 md:m-auto">
+        <div data-aos="fade-left" className="m-10 md:m-auto">
             {
                    loading? ( <div className="flex justify-center items-center my-40"><span className="loading loading-bars loading-lg"></span></div>
                    ) :  myItems.length === 0 ? (<div className={`mockup-window border min-h-screen my-10 ${theme === 'dark'? 'bg-[#000000c3]': 'bg-[#fffd]'}`}>

@@ -23,9 +23,7 @@ const Slider = () => {
           delay: 2500,
           disableOnInteraction: false,
         }}
-        onSwiper={(swiper) => console.log(swiper)}
-        onSlideChange={() => console.log('slide change')}
-    >
+        >
       <SwiperSlide><img className="rounded-3xl" src="https://i.ibb.co/YZyWZpj/art1.png" alt="" /></SwiperSlide>
       <SwiperSlide><img className="rounded-3xl" src="https://i.ibb.co/60zHzqQ/art2.png" alt="" /></SwiperSlide>
       <SwiperSlide><img className="rounded-3xl" src="https://i.ibb.co/87SbZc1/art3.png" alt="" /></SwiperSlide>

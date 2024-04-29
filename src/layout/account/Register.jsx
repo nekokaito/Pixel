@@ -82,7 +82,7 @@ const Register = () => {
           navigation(location?.state ? location.state : '/');
           toast.success('Successfully Login!');
      })
-         .catch (error => console.log(error))
+         .catch (error => setErrorReg(error.message))
       }
 
       const handleGithubLogIn = (e) => {
@@ -92,7 +92,7 @@ const Register = () => {
           navigation(location?.state ? location.state : '/');
           toast.success('Successfully Login!');
      })
-         .catch (error => console.log(error))
+         .catch (error => setErrorReg(error.message))
       }
     
 

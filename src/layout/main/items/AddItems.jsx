@@ -1,11 +1,13 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { AuthContext } from "../../../provider/AuthProvider";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 
 
 const AddItems = () => {
     const {user, theme} = useContext(AuthContext);
-
+    useEffect(() => {
+      document.title = "Pixel | Add Item";
+    }, []);
     const addItem = e => {
             
         e.preventDefault();
@@ -41,7 +43,7 @@ const AddItems = () => {
      })
      .then(res=> res.json())
      .then(data => {
-      console.log(data)
+      
       if(data.insertedId) {
         toast.success('Item Added Successfully');
         document.getElementById("add-item").reset();
@@ -53,7 +55,7 @@ const AddItems = () => {
 
     return (
       <>
-        <div className="flex justify-center item-center">
+        <div data-aos="flip-right" className="flex justify-center item-center">
           
             <div className="flex justify-center">
             <div className={`mockup-window border w-[90%] min-h-screen my-10  ${theme === 'dark'? 'bg-[#000000c3]': 'bg-[#fffd]'}`}>

@@ -12,7 +12,7 @@ const CategoryCard = ({item}) => {
     const {theme} = useContext(AuthContext);
     const {image, name} = item;
     const url = name.replace(/\s/g, "_");
-    console.log(url);
+    
     return (
  <Link to={`/category/${url}`}>
  <div>

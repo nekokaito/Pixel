@@ -4,11 +4,26 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pixel Shop</title>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   </head>
   <body>
     <div id="root"></div>
     
-    <script type="module" src="/src/main.jsx"></script>
+  <script type="module" src="/src/main.jsx"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+    document.querySelectorAll('img')
+.forEach((img) =>
+  img.addEventListener('load', () =>
+      AOS.refresh()
+  )
+);
+console.log('%c Aha! Why are You Here? ', 'background: #00f; color: white');
+  </script>
+    
+
   </body>
+  
 </html>
 

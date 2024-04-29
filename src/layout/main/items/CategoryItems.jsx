@@ -8,12 +8,18 @@ const CategoryItems = () => {
     const [loading, setLoading] = useState(true);
     const { url } = useParams();
     const [items, setItems] = useState([]);
+    const urlName = url.replace(/_/g, " ");
+
+    useEffect(() => {
+        document.title = `Pixel | ${urlName}`;
+      }, []);
 
     useEffect(() => {
         fetch(`https://pixels-server.vercel.app/items/category/${url}`)
             .then(res => res.json())
             .then(data => {
                 setItems(data);
+                window.scrollTo(0, 0);
                 setLoading(false)
             })
             .catch(error => {
