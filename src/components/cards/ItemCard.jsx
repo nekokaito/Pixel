@@ -1,9 +1,9 @@
 import AspectRatio from '@mui/joy/AspectRatio';
-import Button from '@mui/joy/Button';
+
 import Card from '@mui/joy/Card';
 import CardContent from '@mui/joy/CardContent';
 import IconButton from '@mui/joy/IconButton';
-import Typography from '@mui/joy/Typography';
+
 import { useContext } from 'react';
 import { AuthContext } from '../../provider/AuthProvider';
 import { Link } from 'react-router-dom';

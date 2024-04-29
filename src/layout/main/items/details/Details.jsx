@@ -5,7 +5,7 @@ import { CiTimer } from "react-icons/ci";
 import { GiPriceTag } from "react-icons/gi";
 import { useContext } from "react";
 import { AuthContext } from "../../../../provider/AuthProvider";
-import { Rating, Typography } from "@mui/material";
+import { Rating} from "@mui/material";
 
 const Details = () => {
     const {theme} =  useContext(AuthContext);
