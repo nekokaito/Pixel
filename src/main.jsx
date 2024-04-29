@@ -18,6 +18,7 @@ import AllItems from './layout/main/items/AllItems';
 import MyItems from './layout/main/items/MyItems';
 import Details from './layout/main/items/details/Details';
 import Private from './provider/Private';
+import UpdateItem from './layout/main/items/UpdateItem';
 
 const router = createBrowserRouter([
   {
@@ -54,6 +55,11 @@ const router = createBrowserRouter([
         path: "/:_id",
         element: <Details></Details>,
         loader: () => fetch('http://localhost:5000/items')
+      },
+      {
+        path: "/update_item/:id",
+        element: <UpdateItem></UpdateItem>,
+        loader: ({params}) => fetch(`http://localhost:5000/items/id/${params.id}`)    
       }
 
     ] 

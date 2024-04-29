@@ -3,7 +3,7 @@ import TableBody from "./TableBody";
 
 const Table = ({items}) => {
     return (
-        <div>
+        <div className="w-[70%] md:w-full">
             <div className="overflow-x-auto">
   <table className="table ">
     {/* head */}

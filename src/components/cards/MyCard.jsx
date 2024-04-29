@@ -92,7 +92,10 @@ const MyCard = ({myItem, theme}) => {
       </CardContent>
       
         <div className='flex justify-evenly w-full'>
-        <button className='btn'><FiEdit /> Edit</button>
+            <Link to={`/update_item/${_id}`}>
+            <button className='btn'><FiEdit /> Edit</button>
+            </Link>
+        
         <button onClick={() => itemDelete(_id)} className='btn border-none hover:bg-red-700'><MdDeleteForever /> Delete</button>
         </div>
         

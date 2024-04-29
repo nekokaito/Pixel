@@ -14,7 +14,7 @@ const Details = () => {
     const item = items.find(item => item._id == _id);
      
     const {photo_url, item_name,  customization, subcategory_Name, stockStatus, description, price, processing_time, rating} = item;
-
+    window.scrollTo(0, 0);
     return (
         <div className="p-4">
            <div >

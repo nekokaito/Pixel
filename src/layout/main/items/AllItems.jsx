@@ -7,7 +7,7 @@ const AllItems = () => {
     const items = useLoaderData();
     const {theme} =  useContext(AuthContext);
     return (
-        <div>
+        <div className="m-10">
           <div className={`mockup-window border min-h-screen my-10 ${theme === 'dark'? 'bg-[#000000c3]': 'bg-[#fffd]'}`}>
   <div className="flex justify-center px-4 py-16"><Table items={items}></Table>  </div>
 </div>
