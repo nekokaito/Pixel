@@ -39,7 +39,8 @@ const NavBar = () => {
        {links}
       </ul>
     </div>
-    <img className=" w-28" src="Pixel_Logo.png" alt="" />
+    {theme === 'light'? (<img className=" w-28" src="Pixel_Logo.png" alt="" />) : (<img className=" w-28" src="Pixel_Logo_dark.png" alt="" />)}
+    
   </div>
   <div className="navbar-center hidden lg:flex">
     <ul className="menu menu-horizontal px-1 text-white">

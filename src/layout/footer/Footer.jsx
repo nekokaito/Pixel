@@ -1,12 +1,16 @@
+import { useContext } from "react";
 import { FaFacebook,  FaYoutube,  FaInstagram} from "react-icons/fa";
+import { AuthContext } from "../../provider/AuthProvider";
 
 
 
 const Footer = () => {
+  const {theme} = useContext(AuthContext);
     return (
         <footer className="footer footer-center p-10 bg-[#3c1c33db]  text-white">
   <aside>
-<img className="w-32" src="Pixel_Logo_Footer.png" alt="" />
+    {theme === 'light'? (<img className="w-32" src="Pixel_Logo_Footer.png" alt="" />):(<img className="w-32" src="Pixel_Logo_Footer_dark.png" alt="" />)}
+
 <div>
 
 <p className="font-bold  font-pixel">

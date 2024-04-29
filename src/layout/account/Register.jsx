@@ -5,10 +5,11 @@ import { FaGoogle, FaGithub  } from "react-icons/fa";
 import toast, { Toaster } from 'react-hot-toast';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { Typewriter } from 'react-simple-typewriter'
+import { updateProfile } from "firebase/auth";
 
 const Register = () => {
 
-    const {createUser, googleLogin, githubLogin, theme, updateProfile} = useContext(AuthContext)
+    const {createUser, googleLogin, githubLogin, theme} = useContext(AuthContext)
    const location = useLocation();
    const navigation = useNavigate();
    const [showPassword, setShowPassword] = useState(false);

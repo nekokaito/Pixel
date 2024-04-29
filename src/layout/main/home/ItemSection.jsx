@@ -1,10 +1,15 @@
 import { Typewriter } from "react-simple-typewriter";
 import ItemCard from "../../../components/cards/ItemCard";
+import { useContext } from "react";
+import { AuthContext } from "../../../provider/AuthProvider";
 
 const ItemSection = ({items}) => {
+    
+    const {theme} = useContext(AuthContext)
+
     return (
         <div className="my-36">
-            <h1 className="text-center font-roboto font-bold text-2xl lg:text-5xl my-20">Craft {''} <span className=" text-red-500"><Typewriter
+            <h1 className="text-center font-roboto font-bold text-2xl lg:text-5xl my-20">Craft {''} <span className={theme === 'dark'? 'text-[#ff5cb8]': 'text-[#d20723]'} ><Typewriter
             words={['Items', 'Collections', 'and Your Treasures']}
             loop={4}
             cursor
