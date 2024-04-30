@@ -11,12 +11,16 @@ import { Link } from 'react-router-dom';
 import { MdDeleteForever } from "react-icons/md";
 import { MdOutlineDashboardCustomize } from "react-icons/md";
 import Swal from 'sweetalert2';
-
+import Aos from "aos";
+import "aos/dist/aos.css";
+import { useEffect } from 'react';
 
 
 const MyCard = ({myItem}) => {
 
-
+  useEffect(() => {
+    Aos.init();
+  }, []);
       
     const {_id, item_name, subcategory_Name, price, photo_url, rating, customization, stockStatus} = myItem;
 
@@ -52,7 +56,7 @@ const MyCard = ({myItem}) => {
     }
 
     return (
-        <div className='my-6'>
+        <div data-aos="flip-right" className='my-6'>
        <Card color="neutral" variant="soft" className="shadow-md transition duration-300 bg-black  transform  hover:scale-95" sx={{ width: 320, maxWidth: '100%', boxShadow: 'lg'}}>
       <CardOverflow>
         <AspectRatio sx={{ minWidth: 200 }}>

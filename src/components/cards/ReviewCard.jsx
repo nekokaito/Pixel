@@ -5,31 +5,40 @@ import Box from '@mui/joy/Box';
 import Card from '@mui/joy/Card';
 import CardContent from '@mui/joy/CardContent';
 
-import Typography from '@mui/joy/Typography';
+import Aos from "aos";
+import "aos/dist/aos.css";
 import { Rating } from '@mui/material';
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { AuthContext } from '../../provider/AuthProvider';
 
 
-const ReviewCard = ({key, name, review, image, rating}) => {
+const ReviewCard = ({index, name, review, image, rating}) => {
+
+  useEffect(() => {
+    Aos.init();
+  }, []);
 
     const {theme} = useContext(AuthContext);
     return (
       
-       <div  style={{ top: `calc(1rem * ${key + 1})` }} className={`sticky top w-full max-w-xl px-8 py-12 mx-auto space-y-4`}>
+       <div  data-aos="fade-right" style={{ top: `calc(1rem * ${index + 1})` }} className={`sticky top w-full max-w-xl px-8 py-12 mx-auto space-y-4`}>
          <Card
         
         variant="outlined"
         sx={{
           width: 520,
           height: 250,
-          // to make the card resizable
+          
           overflow: 'none',
           resize: 'horizontal',
-          backgroundColor: `${theme === 'dark'? '#000000d2': '#ffffff'}`, // Dark background color
+          backgroundColor: `${theme === 'dark'? '#000000': '#ffffff'}`, // Dark background color
                 color: `${theme === 'light'? '#000': '#fff'}`,
                 border: 'none',
-                padding: '20px'
+                padding: '20px',
+                '@media (max-width: 576px)': { 
+                  width: 400, 
+                  padding: '10px' 
+                }
         }} 
       >
         <Box
@@ -46,7 +55,7 @@ const ReviewCard = ({key, name, review, image, rating}) => {
           </AvatarGroup>
         </Box>
         <CardContent>
-          <h2 className={`${theme === 'light'? '#000': '#fff'} font-pixel text-2xl font-bold`}>{name}</h2>
+          <h2 className={`${theme === 'dark'? 'text-[#ff5cb8]': 'text-[#d45364]'} font-pixel text-2xl font-bold`}>{name}</h2>
           <p className={`${theme === 'light'? '#000': '#fff'} font-roboto font-extralight text-sm`}> {review}
           </p>
            

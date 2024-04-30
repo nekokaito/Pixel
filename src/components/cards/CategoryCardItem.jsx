@@ -8,15 +8,21 @@ import { FiEdit } from "react-icons/fi";
 import Typography from '@mui/joy/Typography';
 import { Rating } from '@mui/material';
 import { Link } from 'react-router-dom';
+import Aos from "aos";
+import "aos/dist/aos.css";
 
 import { MdOutlineDashboardCustomize } from "react-icons/md";
 import { CiViewList } from "react-icons/ci";
+import { useEffect } from 'react';
 
 const CategoryCardItem = ({item}) => {
     const {_id, item_name, subcategory_Name, price, photo_url, rating, customization, stockStatus} = item;
-    
+
+   useEffect(() => {
+      Aos.init();
+    }, []);
     return (
-        <div className='my-6'>
+        <div data-aos="flip-up" className='my-6'>
         <Card color="neutral" variant="soft" className="shadow-md transition duration-300 bg-black  transform  hover:scale-95" sx={{ width: 320, maxWidth: '100%', boxShadow: 'lg'}}>
        <CardOverflow>
          <AspectRatio sx={{ minWidth: 200 }}>

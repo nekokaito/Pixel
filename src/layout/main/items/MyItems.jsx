@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import MyCard from "../../../components/cards/MyCard";
 import { AuthContext } from "../../../provider/AuthProvider";
 import { CircularProgress } from "@mui/joy";
-import { ImGift } from "react-icons/im";
+
 
 
 const MyItems = () => {
@@ -32,8 +32,7 @@ const MyItems = () => {
         <div data-aos="fade-left" className="m-10 md:m-auto">
             {
                    loading? ( <div className="flex justify-center items-center my-40">
-                    {/* <span className="loading loading-bars loading-lg"></span> */}
-                    {/* neutral */}
+                   
                     <CircularProgress color={theme === 'light'?  'danger' : 'neutral'} sx={{ '--CircularProgress-size': '80px' }}>
                     {
                         theme === 'light'? (<img className="w-10" src="/Pixel_Logo_fav.png"></img>) : (<img className="w-10" src="/Pixel_Logo_dark_fav.png"></img>)

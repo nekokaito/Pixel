@@ -2,6 +2,8 @@ import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import CategoryCardItem from "../../../components/cards/CategoryCardItem";
 import { AuthContext } from "../../../provider/AuthProvider";
+import { CircularProgress } from "@mui/joy";
+
 
 const CategoryItems = () => {
     const { theme } = useContext(AuthContext);
@@ -30,7 +32,14 @@ const CategoryItems = () => {
     return (
         <div className="m-10 md:m-auto">
             
-            {loading ? ( <div className="flex justify-center items-center my-40"><span className="loading loading-bars loading-lg"></span></div>
+            {loading ? ( <div className="flex justify-center items-center my-40">
+                   
+                   <CircularProgress color={theme === 'light'?  'danger' : 'neutral'} sx={{ '--CircularProgress-size': '80px' }}>
+                   {
+                       theme === 'light'? (<img className="w-10" src="/Pixel_Logo_fav.png"></img>) : (<img className="w-10" src="/Pixel_Logo_dark_fav.png"></img>)
+                   }
+</CircularProgress>
+                   </div>
             ) : items.length === 0 ? (
                 <div className={`mockup-window border min-h-screen my-10 ${theme === 'dark' ? 'bg-[#000000c3]' : 'bg-[#fffd]'}`}>
                     <div className="flex justify-center items-center h-[500px] px-4">
