@@ -11,7 +11,7 @@
 - **Beautiful UI Design**: Pixel boasts a visually stunning user interface, enhancing the browsing and shopping experience for art enthusiasts.
 - **Wide Range of Artworks**: Explore a diverse collection of paintings and drawings, catering to various tastes and preferences.
 - **Responsive Design**: Access Pixel from any device, as the website is optimized for desktops, tablets, and smartphones, ensuring a consistent experience across platforms.
-- **Secure Transactions**: Enjoy peace of mind while shopping with Pixel, as secure payment gateways safeguard your financial information.
+- **Secure Login**: Protect your account with Pixel's secure login system, ensuring the safety of your personal information.
 
 ### Packages Used:
 ```json
