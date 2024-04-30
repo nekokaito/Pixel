@@ -5,6 +5,7 @@ import ItemSection from "./home/ItemSection";
 import SubSection from "./home/SubSection";
 import { useEffect } from "react";
 import Aos from "aos";
+import ClientReview from "./home/ClientReview";
 
 
 const Home = () => {
@@ -21,6 +22,7 @@ const Home = () => {
            <MiniBanner></MiniBanner>
           <ItemSection items={items}></ItemSection>
           <SubSection items={items}></SubSection>
+          <ClientReview></ClientReview>
         </div>
     );
 };
