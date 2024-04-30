@@ -56,7 +56,7 @@ const MyCard = ({myItem}) => {
     }
 
     return (
-        <div data-aos="flip-right" className='my-6'>
+        <div data-aos="zoom-in-up"  className='my-6'>
        <Card color="neutral" variant="soft" className="shadow-md transition duration-300 bg-black  transform  hover:scale-95" sx={{ width: 320, maxWidth: '100%', boxShadow: 'lg'}}>
       <CardOverflow>
         <AspectRatio sx={{ minWidth: 200 }}>

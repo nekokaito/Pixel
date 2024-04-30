@@ -1,13 +1,18 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { AuthContext } from "../../../provider/AuthProvider";
-
+import Aos from "aos";
+import "aos/dist/aos.css";
 
 const State = () => {
+    useEffect(() => {
+        Aos.init();
+      }, []);
+    
 
     const {theme, user} = useContext(AuthContext);
     return (
-        <div className="flex flex-col md:flex-row justify-center items-center gap-10 my-52">
-            <div className={`grid md:grid-cols-3 rounded-2xl ${theme === 'light'? ' bg-white' : 'bg-black'}  shadow h-[500px] md:h-[200px]`}>
+        <div  className="flex flex-col md:flex-row justify-center items-center gap-10 my-52">
+            <div data-aos="zoom-in-up" className={`grid md:grid-cols-3 rounded-2xl ${theme === 'light'? ' bg-white' : 'bg-black'}  shadow h-[500px] md:h-[200px]`}>
   
   <div className="stat">
     <div className="stat-figure text-primary">
@@ -41,7 +46,7 @@ const State = () => {
   </div>
   
 </div>
-<div className={`stats h-[200px] ${theme === 'light'? ' bg-white text-black' : 'bg-black text-white'} text-primary-content`}>
+<div data-aos="zoom-in-up" className={`stats h-[200px] ${theme === 'light'? ' bg-white text-black' : 'bg-black text-white'} text-primary-content`}>
   
   <div className="stat">
     <div className="stat-title  font-pixel">Total Sell</div>

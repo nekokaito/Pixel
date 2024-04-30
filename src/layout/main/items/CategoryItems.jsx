@@ -50,11 +50,11 @@ const CategoryItems = () => {
 
                 <div className={`mockup-window border min-h-screen my-10 ${theme === 'dark'? 'bg-[#000000c3]': 'bg-[#ffffff63]'}`}>
                 <h1 className=" text-center text-3xl font-pixel">{`${urlName}.js`}</h1>
-                <div className="flex justify-center items-center h-[500px] px-4">
-                <div className="grid lg:grid-cols-2 xl:grid-cols-4 justify-center p-5 gap-10">
+                
+                <div className="grid lg:grid-cols-2 xl:grid-cols-4 justify-center p-10 gap-10">
                     {items.map(item => <CategoryCardItem key={item._id} item={item}></CategoryCardItem>)}
                 </div>
-                </div>
+                
                 </div>
             )}
         </div>

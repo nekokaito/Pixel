@@ -53,9 +53,9 @@ const MyItems = () => {
   <option>No</option>
   </select>
                     </div>
-                   <div className="flex justify-center items-center h-[500px] px-4">
+                   
                     
-                   <div className="grid lg:grid-cols-2 xl:grid-cols-4 justify-center p-5 gap-10">
+                   <div className="grid lg:grid-cols-2 xl:grid-cols-4 justify-center p-10 gap-10">
 
 
 
@@ -66,7 +66,7 @@ const MyItems = () => {
 
 
 
-</div>
+
 
                    </div>
                  </div>
