@@ -35,9 +35,12 @@ const State = () => {
   <div className="stat">
     <div className="stat-figure text-secondary">
       <div className="avatar online">
-        <div className="w-16 rounded-full">
-          <img src={user?.photoURL} />
-        </div>
+        {
+            user? (<div className="w-16 rounded-full">
+            <img src={user?.photoURL} />
+          </div>) : (<div className="hidden"></div>)
+        }
+        
       </div>
     </div>
     <div className="stat-value font-roboto">86%</div>

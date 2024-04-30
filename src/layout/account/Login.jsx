@@ -11,7 +11,7 @@ import { Typewriter } from 'react-simple-typewriter'
 
 
 const Login = () => {
-   
+  window.scrollTo(0, 0);
    const {logIn, googleLogin, githubLogin, theme} = useContext(AuthContext)
    const location = useLocation();
    const navigation = useNavigate();
@@ -26,7 +26,7 @@ const Login = () => {
     
         const form = new FormData(e.currentTarget);
         
-       
+        
         const email =  form.get('email');
         const password =  form.get('password');
         logIn (email, password)
@@ -60,8 +60,8 @@ const Login = () => {
      
      
       return (
-        <div className="my-48">
-        <Toaster />
+        <div data-aos="flip-down" className="my-48 ">
+       
          {/* <h1 className="text-4xl text-center my-10 font-bold">Login Now!</h1> */}
          <h1 className={theme === 'dark'? 'text-white text-4xl text-center my-10 font-bold font-pixel' : 'text-black text-4xl text-center my-10 font-bold font-pixel'}>
        Login and {' '}

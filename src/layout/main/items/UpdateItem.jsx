@@ -62,11 +62,12 @@ const UpdateItem = () => {
 
 
     return (
-        <div>
+        <div data-aos="zoom-out-up">
             <div className="flex justify-center item-center">
           <div><Toaster></Toaster></div>
             <div className="flex justify-center">
             <div className={`mockup-window border w-[90%] min-h-screen my-10  ${theme === 'dark'? 'bg-[#000000c3]': 'bg-[#fffd]'}`}>
+            <h1 className=" text-center text-3xl font-pixel">Update.js</h1>
   <div className="flex justify-center">  <form className="w-[90%] m-10" onSubmit={updateItem}>
             <div className="form-control">
               <label className="label">

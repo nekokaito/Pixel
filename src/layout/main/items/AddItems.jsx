@@ -4,6 +4,7 @@ import toast from "react-hot-toast";
 
 
 const AddItems = () => {
+   window.scrollTo(0, 0);
     const {user, theme} = useContext(AuthContext);
     useEffect(() => {
       document.title = "Pixel | Add Item";

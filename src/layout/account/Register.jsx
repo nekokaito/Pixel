@@ -8,7 +8,7 @@ import { Typewriter } from 'react-simple-typewriter'
 import { updateProfile } from "firebase/auth";
 
 const Register = () => {
-
+    window.scrollTo(0, 0);
     const {createUser, googleLogin, githubLogin, theme} = useContext(AuthContext)
    const location = useLocation();
    const navigation = useNavigate();
@@ -97,10 +97,10 @@ const Register = () => {
     
 
     return (
-        <div className="my-48">
-        <Toaster />
+        <div data-aos="flip-up" className="my-20">
+        
          {/* <h1 className="text-4xl text-center my-10 font-bold">Login Now!</h1> */}
-         <h1 className={theme === 'dark'? 'text-white text-4xl text-center my-10 font-bold font-pixel' : 'text-black text-4xl text-center my-10 font-bold font-pixel'}>
+         <h1 className={theme === 'dark'? 'text-white text-4xl text-center my-5 font-bold font-pixel' : 'text-black text-4xl text-center my-5 font-bold font-pixel'}>
        Create and {' '}
         <span className="text-[#3c1c33db]">
           {/* Style will be inherited from the parent element */}

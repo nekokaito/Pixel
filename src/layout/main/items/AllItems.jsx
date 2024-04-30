@@ -5,6 +5,7 @@ import { AuthContext } from "../../../provider/AuthProvider";
 
 
 const AllItems = () => {
+    window.scrollTo(0, 0);
     const items = useLoaderData();
     const {theme} =  useContext(AuthContext);
     useEffect(() => {
