@@ -1,10 +1,38 @@
 
+<h2 align="center"><u>Pixel - Art & Craft Store</u></h2>
 
-# Pixel - Art & Craft Store
-- B9 A10 Type-02
-- Category: Art & Craft Store
+![](images/banner.png)
+<p align="center">
+    <img src="https://img.shields.io/github/stars/nekokaito/Pixel?style=for-the-badge&color=orange">
+    <img src="https://img.shields.io/github/forks/nekokaito/Pixel?style=for-the-badge&color=purple">
+    <img src="https://img.shields.io/github/contributors/nekokaito/Pixel?style=for-the-badge&color=cyan">
+<br>
+    <img src="https://img.shields.io/badge/Author-Siddiq Sazzad-magenta?style=flat-square">
+    <img src="https://img.shields.io/badge/Open%20Source-Yes-orange?style=flat-square">
+    <img src="https://img.shields.io/badge/Maintained-Yes-cyan?style=flat-square">
+    <img src="https://img.shields.io/badge/Written%20In-React.js-blue?style=flat-square">
+</p>
 
-## Live Site URL: [Pixel](https://pixels-shop-bd.web.app/)
+### Description
+Pixel Art and Craft Website is a dynamic and immersive online platform dedicated to celebrating the timeless fusion of artistic expression and technological innovation. Whether you're an avid pixel artist, a craft enthusiast, or simply someone who appreciates the beauty of handmade creations, Pixel offers a rich and interactive experience that caters to diverse creative interests. Built with cutting-edge technologies like **React.js, Express.js, Node.js, and MongoDB**, this repository houses the codebase that powers Pixel's immersive online experience.
+
+### Installation
+ - `git clone https://github.com/nekokaito/Pixel.git`
+ - `npm i `
+ - `npm run dev`
+
+
+### Live Site 
+-  [Pixel](https://pixels-shop-bd.web.app/)
+
+
+### Preview
+
+![](images/home.png)
+![](images/pic1.png)
+![](images/pic2.png)
+![](images/pic3.png)
+
 
 ### Features:
 - **CRUD Operations**: Easily create, read, update, and delete artworks, providing a seamless experience for managing inventory.

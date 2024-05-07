@@ -6,7 +6,7 @@ import { Tooltip } from 'react-tooltip'
 import { useContext } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
 import { RiLogoutCircleLine } from "react-icons/ri";
-import toast, { Toaster } from 'react-hot-toast';
+import toast from 'react-hot-toast';
 const NavBar = () => {
 
   const {user, logOut, theme} = useContext(AuthContext);
@@ -21,9 +21,9 @@ const NavBar = () => {
    
     const links = <div className="lg:flex gap-3 font-pixel">
         <li><NavLink to="/">Home</NavLink></li>
-        <li><NavLink to="/all_items">All Art & craft Items</NavLink></li>
-        <li><NavLink to="/add_items">Add Craft Item</NavLink></li>
-        <li><NavLink to="/my_items">My Art&Craft List</NavLink></li>
+        <li><NavLink to="/all_items">All Items</NavLink></li>
+        <li><NavLink to="/add_items">Add Item</NavLink></li>
+        <li><NavLink to="/my_items">My Item</NavLink></li>
         
 
     </div>

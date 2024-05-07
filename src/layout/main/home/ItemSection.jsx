@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { Typewriter } from "react-simple-typewriter";
 import ItemCard from "../../../components/cards/ItemCard";
 import { useContext, useEffect } from "react";
