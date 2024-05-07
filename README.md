@@ -28,10 +28,12 @@ Pixel Art and Craft Website is a dynamic and immersive online platform dedicated
 
 ### Preview
 
-![](images/home.png)
-![](images/pic1.png)
-![](images/pic2.png)
-![](images/pic3.png)
+![](images/Home.png)
+<div style="display:flex; gap: 2px">
+![](images/Pic1.png)
+![](images/Pic2.png)
+![](images/Pic3.png)
+<div>
 
 
 ### Features:
