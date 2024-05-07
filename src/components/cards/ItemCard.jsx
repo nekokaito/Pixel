@@ -14,7 +14,7 @@ const ItemCard = ({item}) => {
     const {theme} = useContext(AuthContext);
     const {_id, item_name, subcategory_Name, price, photo_url} = item
     return (
-        <Card className={`shadow-md transition duration-300  transform hover:animate-pulse hover:scale-95`}  sx={{ width: 420, bgcolor: `${theme === 'dark'? '#000000a0': '#fffd'}`, border: 'none' }}>
+        <Card className={`shadow-md transition duration-300  transform hover:animate-pulse hover:scale-95`}  sx={{ width: {md: 420}, bgcolor: `${theme === 'dark'? '#000000a0': '#fffd'}`, border: 'none' }}>
         <div className='font-pixel'>
             <h1 className={`${theme === 'dark'? 'text-white': 'text-black'} text-2xl `}>{item_name}</h1>
             <p className={`${theme === 'dark'? 'text-white': 'text-black'} text-sm`}>{subcategory_Name}</p>

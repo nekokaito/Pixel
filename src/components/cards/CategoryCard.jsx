@@ -20,7 +20,7 @@ const CategoryCard = ({item}) => {
     return (
  <Link to={`/category/${url}`}>
  <div data-aos="flip-down">
-            <Card className={`shadow-md transition duration-300  transform hover:animate-pulse hover:scale-95`}  sx={{ width: 420, bgcolor: `${theme === 'dark'? '#000000a0': '#fffd'}`, border: 'none' }}>
+            <Card className={`shadow-md transition duration-300  transform hover:animate-pulse hover:scale-95`}  sx={{ width: {md: 420}, bgcolor: `${theme === 'dark'? '#000000a0': '#fffd'}`, border: 'none' }}>
         <div className='font-pixel'>
             <h1 className={`${theme === 'dark'? 'text-white': 'text-black'} text-2xl `}>{name}</h1>
             

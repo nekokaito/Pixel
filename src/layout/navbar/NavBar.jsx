@@ -19,7 +19,7 @@ const NavBar = () => {
     .catch()
    }
    
-    const links = <div className="md:flex gap-3 font-pixel">
+    const links = <div className="lg:flex gap-3 font-pixel">
         <li><NavLink to="/">Home</NavLink></li>
         <li><NavLink to="/all_items">All Art & craft Items</NavLink></li>
         <li><NavLink to="/add_items">Add Craft Item</NavLink></li>

@@ -11,7 +11,7 @@ const State = () => {
 
     const {theme, user} = useContext(AuthContext);
     return (
-        <div  className="flex flex-col md:flex-row justify-center items-center gap-10 my-52">
+        <div  className="flex flex-col md:flex-row justify-center items-center gap-10 my-52 px-10">
             <div data-aos="zoom-in-up" className={`grid md:grid-cols-3 rounded-2xl ${theme === 'light'? ' bg-white' : 'bg-black'}  shadow h-[500px] md:h-[200px]`}>
   
   <div className="stat">

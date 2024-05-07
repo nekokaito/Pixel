@@ -14,7 +14,7 @@ const ItemSection = ({items}) => {
       }, []);
 
     return (
-        <div data-aos="fade-up" className="my-36 ">
+        <div data-aos="fade-up" className="my-36">
             <h1  className="text-center font-bold font-jersey  text-white text-2xl lg:text-5xl my-20">Craft {''} <span className={theme === 'dark'? 'text-[#ff5cb8]': 'text-[#d20723]'} ><Typewriter
             words={['Items', 'Collections', 'and Your Treasures']}
             loop={4}
@@ -24,7 +24,7 @@ const ItemSection = ({items}) => {
             deleteSpeed={50}
             delaySpeed={1000}
            /></span><br></br> </h1>
-            <div className="grid lg:grid-cols-2 xl:grid-cols-3 justify-center p-5 gap-10">
+            <div className="grid lg:grid-cols-2 xl:grid-cols-3 justify-center p-10 gap-10">
             {items.slice(0, 6).map(item => <ItemCard key={item._id} item={item}></ItemCard>)}
             </div>
             

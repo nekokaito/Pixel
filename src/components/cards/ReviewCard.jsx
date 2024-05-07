@@ -26,8 +26,8 @@ const ReviewCard = ({index, name, review, image, rating}) => {
         
         variant="outlined"
         sx={{
-          width: 520,
-          height: 250,
+          width: {md: 520},
+          height: {md: 250},
           
           overflow: 'none',
           resize: 'horizontal',
@@ -35,10 +35,7 @@ const ReviewCard = ({index, name, review, image, rating}) => {
                 color: `${theme === 'light'? '#000': '#fff'}`,
                 border: 'none',
                 padding: '20px',
-                '@media (max-width: 576px)': { 
-                  width: 400, 
-                  padding: '10px' 
-                }
+                
         }} 
       >
         <Box

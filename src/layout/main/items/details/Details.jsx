@@ -34,7 +34,7 @@ const Details = () => {
 
                  </div>
 
-                 <div className="grid justify-center items-center grid-cols-2 p-4 font-roboto">
+                 <div className="md:grid md:justify-center items-center md:grid-cols-2 gap-3 p-4 font-roboto">
                  <div className="flex items-center gap-2 text-xs  md:text-base"> <BiSolidCategoryAlt /> <span className=" font-semibold"> Category :</span> {subcategory_Name}</div>
     <div className="flex items-center gap-2 text-xs  md:text-base"> <MdOutlineDashboardCustomize /> <span className=" font-semibold">Customization :</span> {customization}</div>
    <div className="flex items-center gap-2 text-xs  md:text-base"> <CiTimer /><span className=" font-semibold">Processing Time :</span>  {processing_time}</div>
