@@ -9,7 +9,7 @@ const State = () => {
       }, []);
     
 
-    const {theme, user} = useContext(AuthContext);
+    const {theme} = useContext(AuthContext);
     return (
         <div  className="flex flex-col md:flex-row justify-center items-center gap-10 my-52 px-10">
             <div data-aos="zoom-in-up" className={`grid md:grid-cols-3 rounded-2xl ${theme === 'light'? ' bg-white' : 'bg-black'}  shadow h-[500px] md:h-[200px]`}>
@@ -33,23 +33,15 @@ const State = () => {
   </div>
   
   <div className="stat">
-    <div className="stat-figure text-secondary">
-      <div className="avatar online">
-        {
-            user? (<div className="w-16 rounded-full">
-            <img src={user?.photoURL} />
-          </div>) : (<div className="hidden"></div>)
-        }
-        
-      </div>
-    </div>
+   
     <div className="stat-value font-roboto">86%</div>
     <div className="stat-title font-pixel font-roboto">Tasks done</div>
     <div className="stat-desc text-secondary">31 tasks remaining</div>
   </div>
   
 </div>
-<div data-aos="zoom-in-up" className={` w-1/2stats lg:stats rounded-2xl h-[200px] ${theme === 'light'? ' bg-white text-black' : 'bg-black text-white'} text-primary-content`}>
+
+<div data-aos="zoom-in-up" className={` w-1/2stats rounded-2xl h-[200px] ${theme === 'light'? ' bg-white text-black' : 'bg-black text-white'} text-primary-content`}>
   
   <div className="stat">
     <div className="stat-title  font-pixel">Total Sell</div>

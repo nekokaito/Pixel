@@ -25,7 +25,8 @@ const MyCard = ({myItem}) => {
     const {_id, item_name, subcategory_Name, price, photo_url, rating, customization, stockStatus} = myItem;
 
     const itemDelete = (id) => {
-       
+      const sound = new Audio ('pop-up.mp3');
+      sound.play();
         Swal.fire({
             title: "Are you sure?",
             text: "You won't be able to revert this!",
@@ -43,6 +44,7 @@ const MyCard = ({myItem}) => {
               .then(data => {
                 
                if(data.deletedCount > 0 ) {
+                
                 Swal.fire({
                     title: "Deleted!",
                     text: "Your file has been deleted.",

@@ -18,12 +18,20 @@ const NavBar = () => {
     )
     .catch()
    }
+   const clickSound = () => {
+   
+     const sound = new Audio ('click.wav');
+
+     sound.play();
+
+
+   }
    
     const links = <div className="lg:flex gap-3 font-pixel">
-        <li><NavLink to="/">Home</NavLink></li>
-        <li><NavLink to="/all_items">All Items</NavLink></li>
-        <li><NavLink to="/add_items">Add Item</NavLink></li>
-        <li><NavLink to="/my_items">My Item</NavLink></li>
+        <li><NavLink onClick={clickSound} to="/">Home</NavLink></li>
+        <li><NavLink onClick={clickSound} to="/all_items">All Items</NavLink></li>
+        <li><NavLink onClick={clickSound} to="/add_items">Add Item</NavLink></li>
+        <li><NavLink onClick={clickSound} to="/my_items">My Item</NavLink></li>
         
 
     </div>
