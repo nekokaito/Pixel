@@ -49,7 +49,7 @@ const State = () => {
   </div>
   
 </div>
-<div data-aos="zoom-in-up" className={`stats h-[200px] ${theme === 'light'? ' bg-white text-black' : 'bg-black text-white'} text-primary-content`}>
+<div data-aos="zoom-in-up" className={` w-1/2stats lg:stats rounded-2xl h-[200px] ${theme === 'light'? ' bg-white text-black' : 'bg-black text-white'} text-primary-content`}>
   
   <div className="stat">
     <div className="stat-title  font-pixel">Total Sell</div>

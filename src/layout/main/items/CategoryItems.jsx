@@ -30,7 +30,7 @@ const CategoryItems = () => {
     }, [url]);
 
     return (
-        <div className="m-10 md:m-auto">
+        <div className="mx-2 md:m-auto">
             
             {loading ? ( <div className="flex justify-center items-center my-40">
                    

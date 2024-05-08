@@ -56,7 +56,7 @@ const AddItems = () => {
 
     return (
       <>
-        <div data-aos="flip-right" className="flex justify-center item-center">
+        <div data-aos="flip-right" className="flex justify-center item-center mx-auto">
           
             <div className="flex justify-center">
             <div className={`mockup-window border w-[90%] min-h-screen my-10  ${theme === 'dark'? 'bg-[#000000c3]': 'bg-[#fffd]'}`}>

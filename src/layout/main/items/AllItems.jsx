@@ -12,7 +12,7 @@ const AllItems = () => {
       document.title = "Pixel | All Item";
     }, []);
     return (
-        <div data-aos="fade-right" className="m-10 ">
+        <div data-aos="fade-right" className="mx-2 ">
           <div className={`mockup-window border min-h-screen my-10 ${theme === 'dark'? 'bg-[#000000c3]': 'bg-[#fffd]'}`}>
           <h1 className=" text-center text-3xl font-pixel">AllItemList.js</h1>
   <div className="flex justify-center px-4 py-16"><Table items={items}></Table>  </div>

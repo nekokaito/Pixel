@@ -29,7 +29,7 @@ const MyItems = () => {
         return myItems.filter(item => item.customization === filter);
     };
     return (
-        <div data-aos="fade-left" className="m-10 md:m-auto">
+        <div data-aos="fade-left" className="mx-2 md:m-auto">
             {
                    loading? ( <div className="flex justify-center items-center my-40">
                    
