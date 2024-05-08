@@ -12,7 +12,10 @@ import { useContext, useEffect } from 'react';
 import { AuthContext } from '../../provider/AuthProvider';
 
 
-const ReviewCard = ({index, name, review, image, rating}) => {
+const ReviewCard = ({rev}) => {
+
+  const {id, name, review, image, rating} = rev;
+  
 
   useEffect(() => {
     Aos.init();
@@ -21,7 +24,7 @@ const ReviewCard = ({index, name, review, image, rating}) => {
     const {theme} = useContext(AuthContext);
     return (
       
-       <div  data-aos="fade-right" style={{ top: `calc(1rem * ${index + 1})` }} className={`sticky top w-full max-w-xl px-8 py-12 mx-auto space-y-4`}>
+       <div  data-aos="fade-right" style={{ top: `calc(1rem * ${id + 1})` }} className={`sticky top w-full max-w-xl px-8 py-12 mx-auto space-y-4`}>
          <Card
         
         variant="outlined"
