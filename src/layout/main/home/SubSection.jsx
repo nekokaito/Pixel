@@ -2,6 +2,7 @@ import ItemCard from "../../../components/cards/ItemCard";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../provider/AuthProvider";
 import CategoryCard from "../../../components/cards/CategoryCard";
+import { cachedFetchJson, getApiUrl } from "../../../lib/apiCache";
 
 
 const SubSection = ({items}) => {
@@ -9,8 +10,7 @@ const SubSection = ({items}) => {
     const [category, setCategory] = useState([]);
 
     useEffect(()=> {
-        fetch('https://pixels-server.vercel.app/category')
-        .then(res => res.json())
+        cachedFetchJson(getApiUrl('/category'), { ttl: 3600000 })
         .then(data => setCategory(data))
     }, [])
 

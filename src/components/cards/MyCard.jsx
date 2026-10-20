@@ -1,113 +1,128 @@
-import AspectRatio from '@mui/joy/AspectRatio';
-import Card from '@mui/joy/Card';
-import CardContent from '@mui/joy/CardContent';
-import CardOverflow from '@mui/joy/CardOverflow';
-import Chip from '@mui/joy/Chip';
 import { FiEdit } from "react-icons/fi";
-import Typography from '@mui/joy/Typography';
-import { Rating } from '@mui/material';
-import { Link } from 'react-router-dom';
-import { MdDeleteForever } from "react-icons/md";
-import { MdOutlineDashboardCustomize } from "react-icons/md";
-import Swal from 'sweetalert2';
-import Aos from "aos";
-import "aos/dist/aos.css";
-import { useEffect } from 'react';
+import { MdDeleteForever, MdOutlineDashboardCustomize } from "react-icons/md";
+import { Link } from "react-router-dom";
+import RatingStars from "../RatingStars";
+import Swal from "sweetalert2";
+import { invalidateApiCache } from "../../lib/apiCache";
 
+const MyCard = ({ myItem, onDeleted }) => {
+  const {
+    _id,
+    item_name,
+    subcategory_Name,
+    price,
+    photo_url,
+    rating,
+    customization,
+    stockStatus,
+  } = myItem;
 
-const MyCard = ({myItem}) => {
+  const itemDelete = async (id) => {
+    const sound = new Audio("/pop-up.mp3");
+    sound.play().catch(() => {});
 
-  useEffect(() => {
-    Aos.init();
-  }, []);
-      
-    const {_id, item_name, subcategory_Name, price, photo_url, rating, customization, stockStatus} = myItem;
+    const result = await Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    });
 
-    const itemDelete = (id) => {
-      const sound = new Audio ('pop-up.mp3');
-      sound.play();
-        Swal.fire({
-            title: "Are you sure?",
-            text: "You won't be able to revert this!",
-            icon: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#3085d6",
-            cancelButtonColor: "#d33",
-            confirmButtonText: "Yes, delete it!"
-          }).then((result) => {
-            if (result.isConfirmed) {
-              fetch(`https://pixels-server.vercel.app/items/${id}`, {
-                method : 'DELETE'
-              })
-              .then(res => res.json())
-              .then(data => {
-                
-               if(data.deletedCount > 0 ) {
-                
-                Swal.fire({
-                    title: "Deleted!",
-                    text: "Your file has been deleted.",
-                    icon: "success"
-                  });
-                  location.reload();
-               }
-              })
-            }
-          });
+    if (!result.isConfirmed) return;
+
+    try {
+      const response = await fetch(`https://pixels-server.vercel.app/items/${id}`, {
+        method: "DELETE",
+      });
+
+      if (!response.ok) throw new Error("Delete request failed");
+
+      const data = await response.json();
+
+      if (data.deletedCount > 0) {
+        await Swal.fire({
+          title: "Deleted!",
+          text: "Your file has been deleted.",
+          icon: "success",
+        });
+
+        invalidateApiCache("/items");
+        invalidateApiCache("/items/email/");
+        onDeleted?.(id);
+      }
+    } catch (error) {
+      console.error(error);
+      Swal.fire({
+        title: "Error",
+        text: "The item could not be deleted.",
+        icon: "error",
+      });
     }
+  };
 
-    return (
-        <div data-aos="zoom-in-up"  className='my-6'>
-       <Card color="neutral" variant="soft" className="shadow-md transition duration-300 bg-black  transform  hover:scale-95" sx={{ width: 320, maxWidth: '100%', boxShadow: 'lg'}}>
-      <CardOverflow>
-        <AspectRatio sx={{ minWidth: 200 }}>
-          <img
-            src={photo_url}
-            srcSet={photo_url}
-            loading="lazy"
-            alt=""
-          />
-        </AspectRatio>
-      </CardOverflow>
-      <CardContent>
-        <Typography level="body-xs"> <span className='font-roboto'>{subcategory_Name}</span></Typography>
-       
-    <Link to={`/${_id}`}> <span className='font-roboto font-bold'>{item_name}</span></Link>
-    <div>
-    <div className="flex items-center gap-2 text-xs font-thin md:text-base"> <MdOutlineDashboardCustomize size={11}/> <span className=" font-semibold"> <small>Customization :</small></span> <small className='font-pixel'>{customization}</small></div>
-    </div>
-      
-          
-        
+  return (
+    <article className="my-6 w-full max-w-[320px] overflow-hidden rounded-2xl bg-black text-white shadow-md transition-transform duration-300 hover:scale-[0.98]">
+      <div className="aspect-[4/3] w-full overflow-hidden">
+        <img
+          src={photo_url}
+          loading="lazy"
+          decoding="async"
+          alt={item_name}
+          width="640"
+          height="480"
+          className="h-full w-full object-cover"
+        />
+      </div>
 
-        <Typography
-          level="title-lg"
-          sx={{ mt: 1, fontWeight: 'xl' }}
-          endDecorator={
-            <Chip component="span" size="sm" variant="soft" color={stockStatus === 'In stock'? 'success' : 'danger'}>
-              {stockStatus}
-            </Chip>
-          }
+      <div className="p-4">
+        <p className="font-roboto text-xs opacity-75">{subcategory_Name}</p>
+
+        <Link to={`/${_id}`} className="font-roboto font-bold hover:underline">
+          {item_name}
+        </Link>
+
+        <div className="mt-2 flex items-center gap-2 text-xs md:text-sm">
+          <MdOutlineDashboardCustomize size={13} />
+          <span className="font-semibold">Customization:</span>
+          <span className="font-pixel opacity-90">{customization}</span>
+        </div>
+
+        <div className="mt-3 flex items-center gap-2">
+          <span className="text-xl font-bold">{price}৳</span>
+          <span
+            className={`rounded-full px-2 py-1 text-xs font-semibold ${
+              stockStatus === "In stock" ? "bg-green-600/90" : "bg-red-600/90"
+            }`}
+          >
+            {stockStatus}
+          </span>
+        </div>
+
+        <div className="mt-2">
+          <RatingStars value={rating} />
+        </div>
+      </div>
+
+      <div className="flex w-full justify-evenly px-4 pb-4">
+        <Link to={`/update_item/${_id}`}>
+          <button type="button" className="btn">
+            <FiEdit /> Edit
+          </button>
+        </Link>
+
+        <button
+          type="button"
+          onClick={() => itemDelete(_id)}
+          className="btn border-none hover:bg-red-700"
         >
-          {price}৳
-        </Typography>
-        <Typography level="body-sm">
-        <Rating name="read-only" value={rating} readOnly />
-        </Typography>
-      </CardContent>
-      
-        <div className='flex justify-evenly w-full'>
-            <Link to={`/update_item/${_id}`}>
-            <button className='btn'><FiEdit /> Edit</button>
-            </Link>
-        
-        <button onClick={() => itemDelete(_id)} className='btn border-none hover:bg-red-700'><MdDeleteForever /> Delete</button>
-        </div>
-        
-      
-    </Card>
-        </div>
-    );
+          <MdDeleteForever /> Delete
+        </button>
+      </div>
+    </article>
+  );
 };
 
 export default MyCard;

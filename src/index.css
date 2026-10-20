@@ -33,6 +33,43 @@
   position: absolute;
 }
 
+.particles-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.particles-layer canvas {
+  pointer-events: auto;
+}
+
+.particles-fallback {
+  position: absolute;
+  inset: 0;
+  opacity: 0.28;
+  background-image:
+    radial-gradient(circle at 12% 18%, rgba(255,255,255,.8) 0 1px, transparent 2px),
+    radial-gradient(circle at 38% 72%, rgba(255,255,255,.65) 0 1px, transparent 2px),
+    radial-gradient(circle at 66% 28%, rgba(255,255,255,.7) 0 1px, transparent 2px),
+    radial-gradient(circle at 84% 64%, rgba(255,255,255,.7) 0 1px, transparent 2px),
+    radial-gradient(circle at 52% 48%, rgba(255,255,255,.5) 0 1px, transparent 2px);
+  background-size: 260px 260px, 310px 310px, 360px 360px, 420px 420px, 500px 500px;
+}
+
+.slider-image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
 
 
 
+
+
+
+img {
+  display: block;
+  max-width: 100%;
+}

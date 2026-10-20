@@ -1,17 +1,15 @@
-import { useLoaderData, useParams } from "react-router-dom";
+import { useLoaderData } from "react-router-dom";
 import { BiSolidCategoryAlt } from "react-icons/bi";
 import { MdOutlineDashboardCustomize } from "react-icons/md";
 import { CiTimer } from "react-icons/ci";
 import { GiPriceTag } from "react-icons/gi";
 import { useContext } from "react";
 import { AuthContext } from "../../../../provider/AuthProvider";
-import { Rating} from "@mui/material";
+import RatingStars from "../../../../components/RatingStars";
 
 const Details = () => {
     const {theme} =  useContext(AuthContext);
-    const items = useLoaderData();
-    const { _id } = useParams();
-    const item = items.find(item => item._id == _id);
+    const item = useLoaderData();
      
     const {photo_url, item_name,  customization, subcategory_Name, stockStatus, description, price, processing_time, rating} = item;
     window.scrollTo(0, 0);
@@ -30,7 +28,7 @@ const Details = () => {
                     <div className="flex justify-start gap-3">
                     <h1 className="text-3xl font-bold font-pixel">{item_name} </h1>  <div className={stockStatus === 'In stock'? `badge badge-accent badge-outline text-xs p-5`: `badge badge-secondary badge-outline text-xs p-5`}>{stockStatus}</div>
                     </div>
-                    <Rating name="read-only" value={rating} readOnly />
+                    <RatingStars value={rating} />
 
                  </div>
 

@@ -1,5 +1,6 @@
 import { useContext, useEffect } from "react";
 import { AuthContext } from "../../../provider/AuthProvider";
+import { invalidateApiCache } from "../../../lib/apiCache";
 import toast from "react-hot-toast";
 
 
@@ -27,7 +28,7 @@ const AddItems = () => {
      const price = form.price.value;
      const processing_time = form.processing_time.value;
      const rating = form.rating.value;
-     const userPhoto = user?.photoURL;
+     const userPhoto = user?.photoURL || "";
      const itemData = {photo_url, item_name,  username, email, customization, subcategory_Name, stockStatus,description, price, processing_time, rating, userPhoto}
 
     
@@ -47,6 +48,7 @@ const AddItems = () => {
       
       if(data.insertedId) {
         toast.success('Item Added Successfully');
+        invalidateApiCache('/items');
         document.getElementById("add-item").reset();
       }
      })
@@ -56,7 +58,7 @@ const AddItems = () => {
 
     return (
       <>
-        <div data-aos="flip-right" className="flex justify-center item-center mx-auto">
+        <div className="flex justify-center item-center mx-auto">
           
             <div className="flex justify-center">
             <div className={`mockup-window border w-[90%] min-h-screen my-10  ${theme === 'dark'? 'bg-[#000000c3]': 'bg-[#fffd]'}`}>

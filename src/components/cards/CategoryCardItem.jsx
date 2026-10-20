@@ -1,78 +1,74 @@
-import AspectRatio from '@mui/joy/AspectRatio';
-
-import Card from '@mui/joy/Card';
-import CardContent from '@mui/joy/CardContent';
-import CardOverflow from '@mui/joy/CardOverflow';
-import Chip from '@mui/joy/Chip';
-import { FiEdit } from "react-icons/fi";
-import Typography from '@mui/joy/Typography';
-import { Rating } from '@mui/material';
-import { Link } from 'react-router-dom';
-import Aos from "aos";
-import "aos/dist/aos.css";
-
+import { Link } from "react-router-dom";
+import RatingStars from "../RatingStars";
 import { MdOutlineDashboardCustomize } from "react-icons/md";
 import { CiViewList } from "react-icons/ci";
-import { useEffect } from 'react';
 
-const CategoryCardItem = ({item}) => {
-    const {_id, item_name, subcategory_Name, price, photo_url, rating, customization, stockStatus} = item;
+const CategoryCardItem = ({ item }) => {
+  const {
+    _id,
+    item_name,
+    subcategory_Name,
+    price,
+    photo_url,
+    rating,
+    customization,
+    stockStatus,
+  } = item;
 
-   useEffect(() => {
-      Aos.init();
-    }, []);
-    return (
-        <div data-aos="flip-up" className='my-6'>
-        <Card color="neutral" variant="soft" className="shadow-md transition duration-300 bg-black  transform  hover:scale-95" sx={{ width: 320, maxWidth: '100%', boxShadow: 'lg'}}>
-       <CardOverflow>
-         <AspectRatio sx={{ minWidth: 200 }}>
-           <img
-             src={photo_url}
-             srcSet={photo_url}
-             loading="lazy"
-             alt=""
-           />
-         </AspectRatio>
-       </CardOverflow>
-       <CardContent>
-         <Typography level="body-xs"> <span className='font-roboto'>{subcategory_Name}</span></Typography>
-        
-     <Link to={`/${_id}`}> <span className='font-roboto font-bold'>{item_name}</span></Link>
-     <div>
-     <div className="flex items-center gap-2 text-xs font-thin md:text-base"> <MdOutlineDashboardCustomize size={11}/> <span className=" font-semibold"> <small>Customization :</small></span> <small className='font-pixel'>{customization}</small></div>
-     </div>
-       
-           
-         
- 
-         <Typography
-           level="title-lg"
-           sx={{ mt: 1, fontWeight: 'xl' }}
-           endDecorator={
-             <Chip component="span" size="sm" variant="soft" color={stockStatus === 'In stock'? 'success' : 'danger'}>
-               {stockStatus}
-             </Chip>
-           }
-         >
-           {price}৳
-         </Typography>
-         <Typography level="body-sm">
-         <Rating name="read-only" value={rating} readOnly />
-         </Typography>
-       </CardContent>
-       
-         <div className=''>
-             <Link to={`/${_id}`}>
-             <button className='btn'><CiViewList /> View Details</button>
-             </Link>
-         
-         
-         </div>
-         
-       
-     </Card>
-         </div>
-    );
+  const inStock = stockStatus === "In stock";
+
+  return (
+    <article className="my-6 w-full max-w-[320px] overflow-hidden rounded-2xl bg-black shadow-md transition-transform duration-300 hover:scale-[0.98]">
+      <div className="aspect-[4/3] w-full overflow-hidden">
+        <img
+          src={photo_url}
+          loading="lazy"
+          decoding="async"
+          alt={item_name}
+          width="640"
+          height="480"
+          className="h-full w-full object-cover"
+        />
+      </div>
+
+      <div className="p-4 text-white">
+        <p className="font-roboto text-xs opacity-75">{subcategory_Name}</p>
+
+        <Link to={`/${_id}`} className="font-roboto font-bold hover:underline">
+          {item_name}
+        </Link>
+
+        <div className="mt-2 flex items-center gap-2 text-xs md:text-sm">
+          <MdOutlineDashboardCustomize size={13} />
+          <span className="font-semibold">Customization:</span>
+          <span className="font-pixel opacity-90">{customization}</span>
+        </div>
+
+        <div className="mt-3 flex items-center gap-2">
+          <span className="text-xl font-bold">{price}৳</span>
+          <span
+            className={`rounded-full px-2 py-1 text-xs font-semibold ${
+              inStock ? "bg-green-600/90" : "bg-red-600/90"
+            }`}
+          >
+            {stockStatus}
+          </span>
+        </div>
+
+        <div className="mt-2">
+          <RatingStars value={rating} />
+        </div>
+      </div>
+
+      <div className="px-4 pb-4">
+        <Link to={`/${_id}`}>
+          <button type="button" className="btn w-full">
+            <CiViewList /> View Details
+          </button>
+        </Link>
+      </div>
+    </article>
+  );
 };
 
 export default CategoryCardItem;

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { lazy, Suspense } from 'react'
 import ReactDOM from 'react-dom/client'
 import AuthProvider from './provider/AuthProvider';
 
@@ -8,19 +8,30 @@ import {
 } from "react-router-dom";
 import './index.css'
 import Root from './layout/root/Root';
-// eslint-disable-next-line no-unused-vars
-import { element } from 'prop-types';
 import Home from './layout/main/Home';
-import Login from './layout/account/Login';
-import Register from './layout/account/Register';
-import AddItems from './layout/main/items/AddItems';
-import AllItems from './layout/main/items/AllItems';
-import MyItems from './layout/main/items/MyItems';
-import Details from './layout/main/items/details/Details';
+const Login = lazy(() => import('./layout/account/Login'));
+const Register = lazy(() => import('./layout/account/Register'));
+const AddItems = lazy(() => import('./layout/main/items/AddItems'));
+const AllItems = lazy(() => import('./layout/main/items/AllItems'));
+const MyItems = lazy(() => import('./layout/main/items/MyItems'));
+const Details = lazy(() => import('./layout/main/items/details/Details'));
 import Private from './provider/Private';
-import UpdateItem from './layout/main/items/UpdateItem';
+const UpdateItem = lazy(() => import('./layout/main/items/UpdateItem'));
 import Error from './layout/error/Error';
-import CategoryItems from './layout/main/items/CategoryItems';
+import { cachedFetchJson, getApiUrl } from './lib/apiCache';
+const CategoryItems = lazy(() => import('./layout/main/items/CategoryItems'));
+
+const RouteFallback = () => (
+  <div className="flex min-h-[60vh] items-center justify-center" aria-label="Loading">
+    <div className="loading loading-spinner loading-lg" />
+  </div>
+);
+
+const lazyElement = (Component) => (
+  <Suspense fallback={<RouteFallback />}>
+    <Component />
+  </Suspense>
+);
 
 const router = createBrowserRouter([
   {
@@ -31,42 +42,43 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
-        loader: () => fetch('https://pixels-server.vercel.app/items')
+        loader: () => cachedFetchJson(getApiUrl('/items'), { ttl: 20000 })
       },
       {
         path: "/login",
-        element: <Login></Login>
+        element: lazyElement(Login)
       },
       {
         path: "/register",
-        element: <Register></Register>
+        element: lazyElement(Register)
       },
       {
           path: "/all_items",
-          element: <AllItems></AllItems>,
-          loader: () => fetch('https://pixels-server.vercel.app/items')
+          element: lazyElement(AllItems),
+          loader: () => cachedFetchJson(getApiUrl('/items'), { ttl: 20000 })
       },
       {
         path: "/add_items",
-        element: <Private><AddItems></AddItems></Private> 
+        element: <Private>{lazyElement(AddItems)}</Private> 
       },
       {
         path: "/my_items",
-        element: <Private><MyItems></MyItems></Private>
+        element: <Private>{lazyElement(MyItems)}</Private>
       },
       {
         path: "/:_id",
-        element: <Details></Details>,
-        loader: () => fetch('https://pixels-server.vercel.app/items')
+        element: lazyElement(Details),
+        loader: ({ params }) =>
+          cachedFetchJson(getApiUrl(`/items/id/${params._id}`), { ttl: 30000 })
       },
       {
         path: "/update_item/:id",
-        element: <UpdateItem></UpdateItem>,
-        loader: ({params}) => fetch(`https://pixels-server.vercel.app/items/id/${params.id}`)    
+        element: lazyElement(UpdateItem),
+        loader: ({ params }) => cachedFetchJson(getApiUrl(`/items/id/${params.id}`), { ttl: 30000 })    
       },
       {
         path: "/category/:url",
-        element: <CategoryItems></CategoryItems>
+        element: lazyElement(CategoryItems)
 
       }
 

@@ -5,7 +5,6 @@ import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from 'swiper/module
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
-import { Typewriter } from 'react-simple-typewriter'
 
 
 const Slider = () => {
@@ -24,9 +23,9 @@ const Slider = () => {
           disableOnInteraction: false,
         }}
         >
-      <SwiperSlide><img className="rounded-3xl" src="https://i.ibb.co/YZyWZpj/art1.png" alt="" /></SwiperSlide>
-      <SwiperSlide><img className="rounded-3xl" src="https://i.ibb.co/60zHzqQ/art2.png" alt="" /></SwiperSlide>
-      <SwiperSlide><img className="rounded-3xl" src="https://i.ibb.co/87SbZc1/art3.png" alt="" /></SwiperSlide>
+      <SwiperSlide><img className="rounded-3xl slider-image" src="https://i.ibb.co/YZyWZpj/art1.png" alt="Pixel art collection" width="1280" height="600" fetchPriority="high" decoding="async" /></SwiperSlide>
+      <SwiperSlide><img className="rounded-3xl slider-image" src="https://i.ibb.co/60zHzqQ/art2.png" alt="Pixel art collection" width="1280" height="600" loading="lazy" decoding="async" /></SwiperSlide>
+      <SwiperSlide><img className="rounded-3xl slider-image" src="https://i.ibb.co/87SbZc1/art3.png" alt="Pixel art collection" width="1280" height="600" loading="lazy" decoding="async" /></SwiperSlide>
     </Swiper>
 
    

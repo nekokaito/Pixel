@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import ReviewCard from "../../../components/cards/ReviewCard";
+import { cachedFetchJson } from "../../../lib/apiCache";
 
 
 const ClientReview = () => {
@@ -8,8 +9,7 @@ const ClientReview = () => {
 
     useEffect(() => {
    
-         fetch('https://raw.githubusercontent.com/nekokaito/json-data/main/reviews.json')
-         .then(res=> res.json())
+         cachedFetchJson('https://raw.githubusercontent.com/nekokaito/json-data/main/reviews.json', { ttl: 86400000 })
          .then(data => setReviews(data))
 
     },[])

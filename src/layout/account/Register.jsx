@@ -97,7 +97,7 @@ const Register = () => {
     
 
     return (
-        <div data-aos="flip-up" className="my-20">
+        <div className="my-20">
         
          {/* <h1 className="text-4xl text-center my-10 font-bold">Login Now!</h1> */}
          <h1 className={theme === 'dark'? 'text-white text-4xl text-center my-5 font-bold font-pixel' : 'text-black text-4xl text-center my-5 font-bold font-pixel'}>

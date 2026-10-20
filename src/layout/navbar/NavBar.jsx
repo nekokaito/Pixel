@@ -6,6 +6,7 @@ import { Tooltip } from 'react-tooltip'
 import { useContext } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
 import { RiLogoutCircleLine } from "react-icons/ri";
+import Avatar from "../../components/Avatar";
 import toast from 'react-hot-toast';
 const NavBar = () => {
 
@@ -20,7 +21,7 @@ const NavBar = () => {
    }
    const clickSound = () => {
    
-     const sound = new Audio ('click.wav');
+     const sound = new Audio ('/click.wav');
 
      sound.play();
 
@@ -49,7 +50,7 @@ const NavBar = () => {
        {links}
       </ul>
     </div>
-    {theme === 'light'? (<img className=" w-28" src="Pixel_Logo.png" alt="" />) : (<img className=" w-28" src="Pixel_Logo_dark.png" alt="" />)}
+    {theme === 'light'? (<img className=" w-28" src="/Pixel_Logo.png" alt="" />) : (<img className=" w-28" src="/Pixel_Logo_dark.png" alt="" />)}
     
   </div>
   <div className="navbar-center hidden lg:flex">

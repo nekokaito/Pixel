@@ -9,7 +9,7 @@ const Footer = () => {
     return (
         <footer className="footer footer-center p-10 bg-[#3c1c33db]  text-white">
   <aside>
-    {theme === 'light'? (<img className="w-32" src="Pixel_Logo_Footer.png" alt="" />):(<img className="w-32" src="Pixel_Logo_Footer_dark.png" alt="" />)}
+    {theme === 'light'? (<img className="w-32" loading="lazy" decoding="async" src="/Pixel_Logo_Footer.png" alt="" />):(<img className="w-32" loading="lazy" decoding="async" src="/Pixel_Logo_Footer_dark.png" alt="" />)}
 
 <div>
 

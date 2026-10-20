@@ -56,12 +56,8 @@ Pixel Art and Craft Website is a dynamic and immersive online platform dedicated
 ### Packages Used:
 ```json
 {
-  "@emotion/react": "^11.11.4",
-  "@emotion/styled": "^11.11.5",
-  "@material-tailwind/react": "^2.1.9",
-  "@mui/joy": "^5.0.0-beta.36",
-  "@mui/material": "^5.15.15",
-  "@tsparticles/all": "^3.3.0",
+      "@material-tailwind/react": "^2.1.9",
+      "@tsparticles/all": "^3.3.0",
   "@tsparticles/react": "^3.0.0",
   "aos": "^2.3.4",
   "daisyui": "^4.10.2",

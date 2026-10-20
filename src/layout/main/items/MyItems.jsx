@@ -1,7 +1,8 @@
 import { useContext, useEffect, useState } from "react";
 import MyCard from "../../../components/cards/MyCard";
 import { AuthContext } from "../../../provider/AuthProvider";
-import { CircularProgress } from "@mui/joy";
+import { cachedFetchJson, getApiUrl } from "../../../lib/apiCache";
+import LoadingSpinner from "../../../components/LoadingSpinner";
 
 
 
@@ -14,8 +15,7 @@ const MyItems = () => {
     const [loading, setLoading] = useState(true); 
 
     useEffect(()=>{
-        fetch(`https://pixels-server.vercel.app/items/email/${user?.email}`)
-        .then (res => res.json())
+        cachedFetchJson(getApiUrl(`/items/email/${encodeURIComponent(user?.email ?? "")}`), { ttl: 20000 })
         .then (data => {
             
             setMyItems(data);
@@ -29,16 +29,10 @@ const MyItems = () => {
         return myItems.filter(item => item.customization === filter);
     };
     return (
-        <div data-aos="fade-left" className="mx-2 md:m-auto">
+        <div className="mx-2 md:m-auto">
             {
-                   loading? ( <div className="flex justify-center items-center my-40">
-                   
-                    <CircularProgress color={theme === 'light'?  'danger' : 'neutral'} sx={{ '--CircularProgress-size': '80px' }}>
-                    {
-                        theme === 'light'? (<img className="w-10" src="/Pixel_Logo_fav.png"></img>) : (<img className="w-10" src="/Pixel_Logo_dark_fav.png"></img>)
-                    }
-</CircularProgress>
-                    </div>
+                   loading ? (
+                    <LoadingSpinner theme={theme} />
                    ) :  myItems.length === 0 ? (<div className={`mockup-window border min-h-screen my-10 ${theme === 'dark'? 'bg-[#000000c3]': 'bg-[#fffd]'}`}>
                    <div className="flex justify-center items-center h-[500px] px-4"> <h1 className="text-2xl md:text-4xl font-roboto font-bold">No Item is Added By You.</h1></div>
                  </div>) : (
@@ -60,7 +54,13 @@ const MyItems = () => {
 
 
 {
-    filterItems().map(myItem => <MyCard key={myItem._id} myItem={myItem}></MyCard>)
+    filterItems().map(myItem => (
+        <MyCard
+            key={myItem._id}
+            myItem={myItem}
+            onDeleted={(id) => setMyItems((current) => current.filter((item) => item._id !== id))}
+        />
+    ))
 }
 
 

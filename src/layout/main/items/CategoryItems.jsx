@@ -2,7 +2,8 @@ import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import CategoryCardItem from "../../../components/cards/CategoryCardItem";
 import { AuthContext } from "../../../provider/AuthProvider";
-import { CircularProgress } from "@mui/joy";
+import { cachedFetchJson, getApiUrl } from "../../../lib/apiCache";
+import LoadingSpinner from "../../../components/LoadingSpinner";
 
 
 const CategoryItems = () => {
@@ -17,8 +18,7 @@ const CategoryItems = () => {
       }, []);
 
     useEffect(() => {
-        fetch(`https://pixels-server.vercel.app/items/category/${url}`)
-            .then(res => res.json())
+        cachedFetchJson(getApiUrl(`/items/category/${encodeURIComponent(url)}`), { ttl: 20000 })
             .then(data => {
                 setItems(data);
                 window.scrollTo(0, 0);
@@ -32,14 +32,8 @@ const CategoryItems = () => {
     return (
         <div className="mx-2 md:m-auto">
             
-            {loading ? ( <div className="flex justify-center items-center my-40">
-                   
-                   <CircularProgress color={theme === 'light'?  'danger' : 'neutral'} sx={{ '--CircularProgress-size': '80px' }}>
-                   {
-                       theme === 'light'? (<img className="w-10" src="/Pixel_Logo_fav.png"></img>) : (<img className="w-10" src="/Pixel_Logo_dark_fav.png"></img>)
-                   }
-</CircularProgress>
-                   </div>
+            {loading ? (
+                <LoadingSpinner theme={theme} />
             ) : items.length === 0 ? (
                 <div className={`mockup-window border min-h-screen my-10 ${theme === 'dark' ? 'bg-[#000000c3]' : 'bg-[#fffd]'}`}>
                     <div className="flex justify-center items-center h-[500px] px-4">

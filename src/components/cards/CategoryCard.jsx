@@ -1,57 +1,39 @@
-import AspectRatio from '@mui/joy/AspectRatio';
+import { useContext } from "react";
+import { Link } from "react-router-dom";
+import { AuthContext } from "../../provider/AuthProvider";
 
-import Card from '@mui/joy/Card';
-import CardContent from '@mui/joy/CardContent';
-import IconButton from '@mui/joy/IconButton';
-import Aos from "aos";
-import "aos/dist/aos.css";
-import { useContext, useEffect } from 'react';
-import { AuthContext } from '../../provider/AuthProvider';
-import { Link } from 'react-router-dom';
+const CategoryCard = ({ item }) => {
+  const { theme } = useContext(AuthContext);
+  const { image, name } = item;
+  const url = name.replace(/\s/g, "_");
 
-const CategoryCard = ({item}) => {
-    const {theme} = useContext(AuthContext);
-    const {image, name} = item;
-    const url = name.replace(/\s/g, "_");
-    useEffect(() => {
-      Aos.init();
-    }, []);
-    
-    return (
- <Link to={`/category/${url}`}>
- <div data-aos="flip-down">
-            <Card className={`shadow-md transition duration-300  transform hover:animate-pulse hover:scale-95`}  sx={{ width: {md: 420}, bgcolor: `${theme === 'dark'? '#000000a0': '#fffd'}`, border: 'none' }}>
-        <div className='font-pixel'>
-            <h1 className={`${theme === 'dark'? 'text-white': 'text-black'} text-2xl `}>{name}</h1>
-            
-          
-          <IconButton
-            aria-label="bookmark Bahamas Islands"
-            variant="plain"
-            color="neutral"
-            size="sm"
-            sx={{ position: 'absolute', top: '0.875rem', right: '0.5rem' }}
-          >
-            
-          </IconButton>
+  return (
+    <Link to={`/category/${url}`} className="block w-full max-w-[420px]">
+      <article
+        className={`overflow-hidden rounded-2xl border shadow-md transition-transform duration-300 hover:scale-[0.98] ${
+          theme === "dark"
+            ? "border-white/10 bg-black/65 text-white"
+            : "border-black/5 bg-white/90 text-black"
+        }`}
+      >
+        <div className="p-4 font-pixel">
+          <h2 className="text-2xl leading-tight">{name}</h2>
         </div>
-        <AspectRatio minHeight="120px" maxHeight="200px">
+
+        <div className="aspect-[4/3] w-full overflow-hidden bg-black/5">
           <img
             src={image}
-            srcSet={image}
             loading="lazy"
+            decoding="async"
             alt={name}
+            width="640"
+            height="480"
+            className="h-full w-full object-cover"
           />
-        </AspectRatio>
-        <CardContent orientation="horizontal">
-          
-          
-        </CardContent>
-      </Card>
         </div>
- </Link>
-        
-    );
+      </article>
+    </Link>
+  );
 };
 
 export default CategoryCard;

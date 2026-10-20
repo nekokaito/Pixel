@@ -2,7 +2,8 @@ import { useLoaderData } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../../provider/AuthProvider";
-import { Rating } from "@mui/material";
+import { invalidateApiCache } from "../../../lib/apiCache";
+import RatingStars from "../../../components/RatingStars";
 
 const UpdateItem = () => {
    
@@ -37,7 +38,7 @@ const UpdateItem = () => {
      const price = form.price.value;
      const processing_time = form.processing_time.value;
      const rating = form.rating.value;
-     const userPhoto = user?.photoURL;
+     const userPhoto = user?.photoURL || "";
      const itemData = {photo_url, item_name,  username, email, customization, subcategory_Name, stockStatus,description, price, processing_time, rating, userPhoto}
 
      
@@ -55,6 +56,7 @@ const UpdateItem = () => {
       
       if(data.modifiedCount > 0) {
         toast.success('Item Updated Successfully');
+        invalidateApiCache('/items');
       }
      })
 
@@ -62,7 +64,7 @@ const UpdateItem = () => {
 
 
     return (
-        <div data-aos="zoom-out-up">
+        <div>
             <div className="flex justify-center item-center">
           <div><Toaster></Toaster></div>
             <div className="flex justify-center">
@@ -151,9 +153,12 @@ const UpdateItem = () => {
               <label className="label mt-6">
                 <span className={theme === 'dark'? `label-text text-white font-pixel`: `label-text text-black font-pixel`}>Rating</span>
                 <div className="rating">
-                <Rating name="rating" value={ratingValue} onChange={(event, newValue) => {
-    setValue(newValue);
-  }} />
+                <RatingStars
+                  name="rating"
+                  value={ratingValue}
+                  interactive
+                  onChange={setValue}
+                />
 </div>
               </label>
               </div>

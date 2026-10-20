@@ -66,7 +66,7 @@ const AuthProvider = ({children}) => {
 
 
       const changeTheme = (e) => {
-        const sound = new Audio ('change.mp3')
+        const sound = new Audio ('/change.mp3')
         setTheme(e.target.checked ? "dark" : "light");
         sound.play();
 

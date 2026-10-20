@@ -1,108 +1,86 @@
 import Particles, { initParticlesEngine } from "@tsparticles/react";
 import { useEffect, useMemo, useState } from "react";
-// import { loadAll } from "@/tsparticles/all"; // if you are going to use `loadAll`, install the "@tsparticles/all" package too.
-// import { loadFull } from "tsparticles"; // if you are going to use `loadFull`, install the "tsparticles" package too.
-import { loadSlim } from "@tsparticles/slim"; // if you are going to use `loadSlim`, install the "@tsparticles/slim" package too.
-// import { loadBasic } from "@tsparticles/basic"; // if you are going to use `loadBasic`, install the "@tsparticles/basic" package too.
+import { loadSlim } from "@tsparticles/slim";
 
+let enginePromise;
 
-
-const ParticlesComponent = (props) => {
-
-  const [init, setInit] = useState(false);
-  // this should be run only once per application lifetime
-  useEffect(() => {
-    initParticlesEngine(async (engine) => {
-      // you can initiate the tsParticles instance (engine) here, adding custom shapes or presets
-      // this loads the tsparticles package bundle, it's the easiest method for getting everything ready
-      // starting from v2 you can add only the features you need reducing the bundle size
-      //await loadAll(engine);
-      //await loadFull(engine);
+function ensureEngine() {
+  if (!enginePromise) {
+    enginePromise = initParticlesEngine(async (engine) => {
       await loadSlim(engine);
-      //await loadBasic(engine);
-    }).then(() => {
-      setInit(true);
     });
+  }
+  return enginePromise;
+}
+
+const ParticlesComponent = ({ id }) => {
+  const [ready, setReady] = useState(false);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    // Start immediately after the first browser paint instead of waiting for
+    // requestIdleCallback. This keeps the UI responsive while avoiding a
+    // noticeable particle delay.
+    const frame = window.requestAnimationFrame(() => {
+      ensureEngine().then(() => {
+        if (!cancelled) setReady(true);
+      });
+    });
+
+    return () => {
+      cancelled = true;
+      window.cancelAnimationFrame(frame);
+    };
   }, []);
-
-  const particlesLoaded = (container) => {
-    console.log(container);
-  };
-
 
   const options = useMemo(
     () => ({
-      background: {
-        color: {
-          
-        },
-      },
-      fpsLimit: 120,
+      fullScreen: { enable: false },
+      fpsLimit: 45,
+      detectRetina: false,
+      pauseOnBlur: true,
+      pauseOnOutsideViewport: true,
       interactivity: {
         events: {
-          onClick: {
-            enable: true,
-            mode: "repulse",
-          },
-          onHover: {
-            enable: true,
-            mode: 'grab',
-          },
+          onClick: { enable: true, mode: "repulse" },
+          onHover: { enable: true, mode: "grab" },
         },
         modes: {
-          push: {
-            distance: 200,
-            duration: 15,
-          },
-          grab: {
-            distance: 150,
-          },
+          grab: { distance: 120, links: { opacity: 0.35 } },
+          repulse: { distance: 100, duration: 0.35 },
         },
       },
       particles: {
-        color: {
-          value: "#FFFFFF",
-        },
+        color: { value: "#FFFFFF" },
         links: {
           color: "#FFFFFF",
           distance: 150,
           enable: true,
-          opacity: 0.3,
+          opacity: 0.2,
           width: 1,
         },
         move: {
           direction: "none",
           enable: true,
-          outModes: {
-            default: "bounce",
-          },
-          random: true,
-          speed: 1,
+          outModes: { default: "bounce" },
+          random: false,
+          speed: 0.55,
           straight: false,
         },
         number: {
-          density: {
-            enable: true,
-          },
-          value: 150,
+          density: { enable: true, area: 1200 },
+          value: 55,
         },
-        opacity: {
-          value: 1.0,
-        },
-        shape: {
-          type: "circle",
-        },
-        size: {
-          value: { min: 1, max: 3 },
-        },
+        opacity: { value: 0.75 },
+        shape: { type: "circle" },
+        size: { value: { min: 1, max: 2.2 } },
       },
-      detectRetina: true,
     }),
     [],
   );
 
-
-  return <Particles id={props.id} init={particlesLoaded} options={options} />; 
+  return ready ? <Particles id={id} options={options} /> : null;
 };
 
 export default ParticlesComponent;
