@@ -23,7 +23,7 @@ Pixel Art and Craft Website is a dynamic and immersive online platform dedicated
 
 
 ### Live Site 
--  [Pixel](https://pixels-shop-bd.web.app/)
+-  [Pixel](https://pixelshopbd.vercel.app/)
 
 
 ### Preview
