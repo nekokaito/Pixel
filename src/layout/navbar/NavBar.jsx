@@ -6,7 +6,6 @@ import { Tooltip } from 'react-tooltip'
 import { useContext } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
 import { RiLogoutCircleLine } from "react-icons/ri";
-import Avatar from "../../components/Avatar";
 import toast from 'react-hot-toast';
 const NavBar = () => {
 
@@ -33,6 +32,8 @@ const NavBar = () => {
         <li><NavLink onClick={clickSound} to="/all_items">All Items</NavLink></li>
         <li><NavLink onClick={clickSound} to="/add_items">Add Item</NavLink></li>
         <li><NavLink onClick={clickSound} to="/my_items">My Item</NavLink></li>
+        {user && <li><NavLink to="/studio">Artist Studio</NavLink></li>}
+        {user && <li><NavLink to="/orders">Orders</NavLink></li>}
         
 
     </div>

@@ -1,0 +1,57 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /artists/{artistId} {
+      allow read: if true;
+      allow create, update: if request.auth != null
+        && request.auth.uid == artistId
+        && request.resource.data.keys().hasOnly(['uid', 'email', 'name', 'bio', 'bannerUrl', 'avatarUrl', 'updatedAt'])
+        && request.resource.data.uid == artistId
+        && request.resource.data.email == request.auth.token.email
+        && request.resource.data.name is string
+        && request.resource.data.name.size() > 0
+        && request.resource.data.name.size() <= 80
+        && request.resource.data.bio is string
+        && request.resource.data.bio.size() <= 1000
+        && request.resource.data.bannerUrl is string
+        && request.resource.data.bannerUrl.size() <= 500
+        && request.resource.data.avatarUrl is string
+        && request.resource.data.avatarUrl.size() <= 500
+        && request.resource.data.updatedAt == request.time;
+      allow delete: if false;
+    }
+
+    match /commissions/{commissionId} {
+      allow read: if request.auth != null
+        && (request.auth.uid == resource.data.artistId || request.auth.uid == resource.data.buyerId);
+      allow create: if request.auth != null
+        && request.resource.data.keys().hasOnly(['artistId', 'buyerId', 'buyerEmail', 'artistName', 'title', 'brief', 'referenceUrl', 'budget', 'status', 'createdAt', 'updatedAt'])
+        && request.resource.data.buyerId == request.auth.uid
+        && request.resource.data.buyerEmail == request.auth.token.email
+        && request.resource.data.artistId != request.auth.uid
+        && exists(/databases/$(database)/documents/artists/$(request.resource.data.artistId))
+        && request.resource.data.artistName == get(/databases/$(database)/documents/artists/$(request.resource.data.artistId)).data.name
+        && request.resource.data.title is string
+        && request.resource.data.title.size() > 0
+        && request.resource.data.title.size() <= 120
+        && request.resource.data.brief is string
+        && request.resource.data.brief.size() > 0
+        && request.resource.data.brief.size() <= 3000
+        && request.resource.data.referenceUrl is string
+        && request.resource.data.referenceUrl.size() <= 500
+        && request.resource.data.budget is number
+        && request.resource.data.budget >= 0
+        && request.resource.data.status == 'requested'
+        && request.resource.data.createdAt == request.time
+        && request.resource.data.updatedAt == request.time;
+      allow update: if request.auth != null
+        && request.auth.uid == resource.data.artistId
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['status', 'updatedAt'])
+        && request.resource.data.updatedAt == request.time
+        && ((resource.data.status == 'requested' && request.resource.data.status in ['accepted', 'declined'])
+          || (resource.data.status == 'accepted' && request.resource.data.status == 'in_progress')
+          || (resource.data.status == 'in_progress' && request.resource.data.status == 'completed'));
+      allow delete: if false;
+    }
+  }
+}

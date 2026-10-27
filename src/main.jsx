@@ -20,6 +20,9 @@ const UpdateItem = lazy(() => import('./layout/main/items/UpdateItem'));
 import Error from './layout/error/Error';
 import { cachedFetchJson, getApiUrl } from './lib/apiCache';
 const CategoryItems = lazy(() => import('./layout/main/items/CategoryItems'));
+const ArtistStudio = lazy(() => import('./layout/main/ArtistStudio'));
+const ArtistStorefront = lazy(() => import('./layout/main/ArtistStorefront'));
+const Orders = lazy(() => import('./layout/main/Orders'));
 
 const RouteFallback = () => (
   <div className="flex min-h-[60vh] items-center justify-center" aria-label="Loading">
@@ -51,6 +54,18 @@ const router = createBrowserRouter([
       {
         path: "/register",
         element: lazyElement(Register)
+      },
+      {
+        path: "/studio",
+        element: <Private>{lazyElement(ArtistStudio)}</Private>
+      },
+      {
+        path: "/artists/:uid",
+        element: lazyElement(ArtistStorefront)
+      },
+      {
+        path: "/orders",
+        element: <Private>{lazyElement(Orders)}</Private>
       },
       {
           path: "/all_items",
